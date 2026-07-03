@@ -1,0 +1,43 @@
+{
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "tailwindCSS.classAttributes": ["class", "className", "classList", ".*Css"],
+  "tailwindCSS.classFunctions": ["clsx", "cn", "cva"],
+  "editor.defaultFormatter": "biomejs.biome",
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports.biome": "explicit",
+    "source.fixAll.biome": "explicit"
+  },
+
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+  "[css]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  },
+
+  "cSpell.words": [
+    "Codepen",
+    "dibyendubiswas",
+    "Filenaming",
+    "grotesk",
+    "navlinks",
+    "pdfs",
+    "roleplay",
+    "Roleplays",
+    "Shadcn",
+    "sonner",
+    "STARTWITH",
+    "stringbool",
+    "superadmin",
+    "superadmins",
+    "totp",
+    "trivago"
+  ]
+}

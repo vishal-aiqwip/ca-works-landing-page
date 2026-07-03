@@ -1,0 +1,63 @@
+{
+  "React Arrow Function Component with JSDoc and Sections": {
+    "prefix": "rafc",
+    "body": [
+      "import React from 'react';",
+      "import { cn } from '@/lib';",
+      "",
+      "/**",
+      " * ${1:${TM_FILENAME_BASE}}",
+      " * @returns  {JSX.Element}",
+      " */",
+      "export const ${2:${TM_FILENAME_BASE}} = ({ _this${3:, className} }) => {",
+      "  //-------------- State & Variables --------------//",
+      "",
+      "  //-------------- Use Effects --------------//",
+      "",
+      "  //-------------- Other Methods --------------//",
+      "",
+      "  return (",
+      "    <div className={cn(''${4:, className})}>",
+      "      $0",
+      "    </div>",
+      "  );",
+      "};"
+    ],
+    "description": "React Arrow Function Component with JSDoc and layout sections"
+  },
+  "React function comments": {
+    "prefix": "_comments",
+    "body": [
+      " //-------------- State & Variables --------------//",
+      " ${1}",
+      " //-------------- Use Effects --------------//",
+      " ${2}",
+      " //-------------- Other Methods --------------//",
+      " ${3}"
+    ]
+  },
+  "File Header Comment": {
+    "prefix": "_fileheader",
+    "body": [
+      "/**",
+      " * @file ${TM_FILENAME}",
+      " * @description ${1:File description here...}",
+      // " * Created at: ${CURRENT_DATE}/${CURRENT_MONTH}/${CURRENT_YEAR}",
+      // " * Updated at: ${CURRENT_DATE}/${CURRENT_MONTH}/${CURRENT_YEAR}",
+      " */"
+    ],
+    "description": "Insert standard file header comment"
+  },
+  "Arrow Function": {
+    "prefix": "_fn",
+    "body": [
+      "/**",
+      " * Handle ${1:description}",
+      " */",
+      "const ${2:FunctionName} = (${3:values}) => {",
+      "  ${4:// Code here}",
+      "};"
+    ],
+    "description": "Insert an ES6 arrow function"
+  }
+}

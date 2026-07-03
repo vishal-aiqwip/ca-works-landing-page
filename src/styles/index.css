@@ -1,0 +1,132 @@
+@import "./tailwind.css";
+
+body {
+  font-family: var(--font-lato), sans-serif;
+}
+
+/* Hero animations — CSS-only to keep above-fold JS small */
+@keyframes hero-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes hero-fade-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+@keyframes hero-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+.hero-fade-up {
+  opacity: 0;
+  animation: hero-fade-up 0.6s ease-out forwards;
+}
+.hero-fade-in {
+  opacity: 0;
+  animation: hero-fade-in 0.8s ease-out 0.3s forwards;
+}
+.hero-float {
+  animation: hero-float 5s ease-in-out infinite;
+}
+.delay-100 {
+  animation-delay: 0.1s;
+}
+.delay-200 {
+  animation-delay: 0.2s;
+}
+.delay-300 {
+  animation-delay: 0.3s;
+}
+.delay-400 {
+  animation-delay: 0.4s;
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-fade-up,
+  .hero-fade-in,
+  .hero-float {
+    animation: none;
+    opacity: 1;
+    transform: none;
+  }
+}
+button {
+  @apply cursor-pointer;
+}
+
+@utility b {
+  @apply !border !border-red-500;
+}
+
+@utility container-center {
+  @apply container mx-auto;
+}
+
+/* Heading */
+@utility heading {
+  @apply text-primary text-xl sm:text-4xl font-bold w-fit;
+}
+
+@utility heading-2 {
+  @apply text-primary sm:text-2xl font-semibold w-fit;
+}
+@utility heading-3 {
+  @apply text-primary sm:text-lg font-semibold w-fit;
+}
+
+@utility heading-4 {
+  @apply text-primary text-base font-semibold w-fit;
+}
+
+.client-swiper .swiper-wrapper {
+  transition-timing-function: linear !important;
+}
+
+/* svg title {
+  display: none !important;
+} */
+
+.custom-gradient {
+  background: radial-gradient(
+    144.73% 144.73% at 50% -48.88%,
+    #4472b7 0%,
+    #071831 100%
+  );
+}
+
+/* Hero gradient text shimmer */
+.hero-gradient-text {
+  background-size: 200% auto;
+  animation: hero-gradient-shift 6s ease-in-out infinite;
+}
+
+@keyframes hero-gradient-shift {
+  0%,
+  100% {
+    background-position: 0% center;
+  }
+  50% {
+    background-position: 100% center;
+  }
+}
+
+/* Hero section base */
+.hero-section {
+  background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+}
