@@ -35,7 +35,7 @@ const Header = () => {
         </nav>
 
         <div className="flex items-center gap-3">
-          <Button variant="secondary" size="lg" asChild>
+          <Button variant="secondary" size="lg" className="hidden sm:inline-flex" asChild>
             <a href="/login">Log in</a>
           </Button>
           <Button variant="default-shadow" size="lg" asChild>

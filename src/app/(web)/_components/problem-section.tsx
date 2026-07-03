@@ -43,7 +43,7 @@ const PROBLEMS = [
 const ProblemSection = () => {
   return (
     <section className="bg-white">
-      <div className="mx-auto max-w-[95%] px-8 py-16">
+      <div className="mx-auto max-w-[95%] px-4 py-10 sm:px-6 sm:py-16 lg:px-8">
         <div className="mb-4.5 text-center font-extrabold text-[#F0506B] text-[13px] uppercase tracking-[0.1em]">
           The problem
         </div>
@@ -51,7 +51,7 @@ const ProblemSection = () => {
           Your team is losing time following up for documents, sending reminders
           and answering questions.
         </p>
-        <div className="grid grid-cols-[0.85fr_1.15fr] items-stretch gap-14">
+        <div className="grid grid-cols-1 items-stretch gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-14">
           <div className="flex flex-col gap-7">
             <div className="relative min-h-[400px] flex-1 overflow-hidden rounded-2xl">
               <Image
@@ -63,7 +63,7 @@ const ProblemSection = () => {
               />
             </div>
             <div>
-              <h2 className="mb-4 font-bold text-[34px] text-foreground leading-[1.14] tracking-[-0.025em]">
+              <h2 className="mb-4 font-bold text-foreground text-xl leading-[1.14] tracking-[-0.025em] md:text-[34px]">
                 Manual client communication is eating your team's day
               </h2>
               <p className="text-[17px] text-muted-foreground leading-[1.6]">

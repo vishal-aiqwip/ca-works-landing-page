@@ -3,9 +3,9 @@ import { BOOKING_URL } from "@/config";
 
 const CtaSection = () => {
   return (
-    <section id="cta" className="mx-auto max-w-[95%] px-8 py-[90px]">
+    <section id="cta" className="mx-auto max-w-[95%] px-4 py-14 sm:px-6 sm:py-22.5 lg:px-8">
       <div
-        className="relative overflow-hidden rounded-[28px] px-8 py-16 text-center text-white shadow-[0_30px_70px_-30px_rgba(4,100,228,0.6)] sm:px-14"
+        className="relative overflow-hidden rounded-[28px] px-5 py-10 text-center text-white shadow-[0_30px_70px_-30px_rgba(4,100,228,0.6)] sm:px-8 sm:py-16 md:px-14"
         style={{
           background:
             "radial-gradient(120% 140% at 80% 0%, #0A4FB4 0%, #0464E4 55%, #0E4090 100%)",
@@ -14,7 +14,7 @@ const CtaSection = () => {
         <div className="mb-4 font-extrabold text-[#AECBFB] text-[13px] uppercase tracking-[0.12em]">
           Get started
         </div>
-        <h2 className="mx-auto mb-4 max-w-[30ch] font-bold text-[34px] leading-[1.22] tracking-[-0.02em]">
+        <h2 className="mx-auto mb-4 max-w-[30ch] font-bold text-[24px] leading-[1.22] tracking-[-0.02em] sm:text-[34px]">
           Let CA Works handle tedious work while your team is focused on
           critical business
         </h2>

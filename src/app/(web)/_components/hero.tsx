@@ -13,7 +13,7 @@ const Hero = () => {
         CA Works helps to manage client communications across various channels
         like Email & WhatsApp
       </p>
-      <div className="mt-10 flex items-center justify-center gap-4">
+      <div className="mt-10 flex flex-wrap items-center justify-center gap-4">
         <Button variant="default-shadow" size="lg" asChild>
           <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer">
             Book a Demo

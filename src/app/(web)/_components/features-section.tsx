@@ -42,7 +42,7 @@ const FEATURES = [
 
 const FeaturesSection = () => {
   return (
-    <section id="features" className="mx-auto max-w-[95%] px-8 py-20">
+    <section id="features" className="mx-auto max-w-[95%] px-4 py-12 sm:px-6 sm:py-20 lg:px-8">
       <div className="mx-auto mb-11 max-w-[54ch] text-center">
         <div className="mb-3 font-extrabold text-[13px] text-primary uppercase tracking-[0.1em]">
           Features
