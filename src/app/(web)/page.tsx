@@ -1,7 +1,15 @@
 import type { Metadata } from "next";
+import NextImage from "next/image";
 
-import { Button } from "@/components";
-import { BOOKING_URL } from "@/config";
+import CtaSection from "./_components/cta-section";
+import FeaturesSection from "./_components/features-section";
+import Hero from "./_components/hero";
+import HowItWorks from "./_components/how-it-works";
+import ProblemSection from "./_components/problem-section";
+import ProductDemo from "./_components/product-demo";
+import Testimonials from "./_components/testimonials";
+import TrustBar from "./_components/trust-bar";
+import ValueProps from "./_components/value-props";
 
 /**
  * Metadata for the page
@@ -26,31 +34,37 @@ export const metadata: Metadata = {
  */
 export default async function Home() {
   return (
-    <section className="bg-linear-to-b from-white to-accent">
-      <div className="mx-auto max-w-4xl px-4 py-24 text-center sm:px-6 sm:py-32 lg:px-8">
-        <h1 className="text-balance font-extrabold text-4xl text-foreground tracking-tight sm:text-6xl">
-          Stop losing time on repetitive client communications
-        </h1>
-        <p className="mx-auto mt-6 max-w-2xl text-balance text-lg text-muted-foreground">
-          CA Works helps to manage client communications across various
-          channels like Email & WhatsApp
-        </p>
-        <div className="mt-10 flex items-center justify-center gap-4">
-          <Button variant="default-shadow" size="lg" asChild>
-            <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer">
-              Book a Demo
-            </a>
-          </Button>
-          <Button
-            variant="outline"
-            size="lg"
-            className="border-primary text-primary hover:bg-accent hover:text-primary"
-            asChild
-          >
-            <a href="#how-it-works">See how it works</a>
-          </Button>
+    <>
+      <section
+        className="border-[#EEF2FA] border-b"
+        style={{
+          background: "radial-gradient(120% 90% at 50% -10%, #ECF3FE 0%, #F3F6FD 45%, #fff 100%)",
+        }}
+      >
+        <Hero />
+
+        <div className="hidden md:block">
+          <ProductDemo />
         </div>
-      </div>
-    </section>
+        <div className="px-5 pb-16 md:hidden">
+          <NextImage
+            src="/videos/product-view.gif"
+            alt="CA Works product preview"
+            width={800}
+            height={600}
+            unoptimized
+            className="h-auto w-full rounded-2xl border border-[#DCE4F0]"
+          />
+        </div>
+      </section>
+
+      <TrustBar />
+      <ProblemSection />
+      <ValueProps />
+      <FeaturesSection />
+      <HowItWorks />
+      <Testimonials />
+      <CtaSection />
+    </>
   );
 }
