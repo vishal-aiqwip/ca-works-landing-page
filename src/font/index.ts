@@ -1,4 +1,4 @@
-import { Lato } from "next/font/google";
+import { Hanken_Grotesk } from "next/font/google";
 
 //
 
@@ -8,9 +8,9 @@ import { Lato } from "next/font/google";
 //   variable: "--font-titillium",
 // });
 
-export const lato = Lato({
-  weight: ["300", "400", "700"],
+export const hankenGrotesk = Hanken_Grotesk({
+  weight: ["400", "500", "600", "700", "800"],
   subsets: ["latin"],
-  variable: "--font-lato",
+  variable: "--font-hanken-grotesk",
   display: "swap",
 });

@@ -35,10 +35,10 @@ const Header = () => {
         </nav>
 
         <div className="flex items-center gap-3">
-          <Button variant="secondary" size="md" asChild>
+          <Button variant="secondary" size="lg" asChild>
             <a href="/login">Log in</a>
           </Button>
-          <Button size="md" asChild>
+          <Button variant="default-shadow" size="lg" asChild>
             <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer">
               Book a Demo
             </a>

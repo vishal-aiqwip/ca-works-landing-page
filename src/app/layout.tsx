@@ -5,7 +5,7 @@ import type { PropsWithChildren } from "react";
 import { GoogleAnalytics, GoogleTagManager } from "@next/third-parties/google";
 
 import { APP_NAME } from "@/config";
-import { lato } from "@/font";
+import { hankenGrotesk } from "@/font";
 import { Providers as AllProviders } from "@/provider";
 import "@/styles/index.css";
 
@@ -89,7 +89,9 @@ export default async function RootLayout({
       </head>
       {/* FO<GoogleAnalytics gaId="G-LJGPWSHW8F" /> */}
 
-      <body className={`${lato.variable} overflow-x-hidden antialiased`}>
+      <body
+        className={`${hankenGrotesk.variable} overflow-x-hidden antialiased`}
+      >
         <a
           href="#main-content"
           className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-lg focus:bg-primary focus:px-4 focus:py-2 focus:text-white"

@@ -1,7 +1,7 @@
 @import "./tailwind.css";
 
 body {
-  font-family: var(--font-lato), sans-serif;
+  font-family: var(--font-hanken-grotesk), sans-serif;
 }
 
 /* Hero animations — CSS-only to keep above-fold JS small */

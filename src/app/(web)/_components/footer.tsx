@@ -44,8 +44,8 @@ const Footer = () => {
               <span className="font-bold text-lg">{APP_NAME}</span>
             </Link>
             <p className="mt-4 max-w-xs text-muted-foreground text-sm">
-              The AI client communication layer for chartered accountants
-              across Email & WhatsApp.
+              The AI client communication layer for chartered accountants across
+              Email & WhatsApp.
             </p>
           </div>
 

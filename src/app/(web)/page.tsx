@@ -36,7 +36,7 @@ export default async function Home() {
           channels like Email & WhatsApp
         </p>
         <div className="mt-10 flex items-center justify-center gap-4">
-          <Button size="lg" asChild>
+          <Button variant="default-shadow" size="lg" asChild>
             <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer">
               Book a Demo
             </a>
