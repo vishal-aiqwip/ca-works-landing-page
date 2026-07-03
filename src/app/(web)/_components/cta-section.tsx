@@ -18,10 +18,10 @@ const CtaSection = () => {
           Let CA Works handle tedious work while your team is focused on
           critical business
         </h2>
-        <div className="flex flex-wrap justify-center gap-3.5">
+        <div className="flex justify-center gap-2 sm:gap-3.5">
           <Button
             size="lg"
-            className="rounded-xl bg-white px-8 py-4 text-[16px] text-primary shadow-[0_10px_24px_rgba(0,0,0,0.16)] hover:bg-accent"
+            className="flex-1 rounded-xl bg-white px-4 py-3 text-[14px] text-primary shadow-[0_10px_24px_rgba(0,0,0,0.16)] hover:bg-accent sm:flex-none sm:px-8 sm:py-4 sm:text-[16px]"
             asChild
           >
             <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer">
@@ -31,7 +31,7 @@ const CtaSection = () => {
           <Button
             size="lg"
             variant="ghost"
-            className="rounded-xl border-[1.5px] border-white/35 bg-white/[.14] px-8 py-4 text-[16px] text-white hover:bg-white/[.22] hover:text-white"
+            className="flex-1 rounded-xl border-[1.5px] border-white/35 bg-white/[.14] px-4 py-3 text-[14px] text-white hover:bg-white/[.22] hover:text-white sm:flex-none sm:px-8 sm:py-4 sm:text-[16px]"
             asChild
           >
             <a href="#pricing">View Pricing</a>
