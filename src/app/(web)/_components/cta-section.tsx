@@ -5,6 +5,7 @@ const CtaSection = () => {
   return (
     <section id="cta" className="mx-auto max-w-[95%] px-4 py-14 sm:px-6 sm:py-22.5 lg:px-8">
       <div
+        data-reveal-scale
         className="relative overflow-hidden rounded-[28px] px-5 py-10 text-center text-white shadow-[0_30px_70px_-30px_rgba(4,100,228,0.6)] sm:px-8 sm:py-16 md:px-14"
         style={{
           background:
