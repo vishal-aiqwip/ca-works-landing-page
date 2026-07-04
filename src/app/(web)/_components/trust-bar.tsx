@@ -11,7 +11,10 @@ const TrustBar = () => {
   return (
     <section className="bg-white">
       <div className="mx-auto max-w-[95%] px-4 py-10 text-center sm:px-6 sm:py-16 lg:px-8">
-        <span className="mb-[22px] block font-bold text-[13px] text-primary uppercase tracking-[0.08em]">
+        <span
+          data-reveal
+          className="mb-[22px] block font-bold text-[13px] text-primary uppercase tracking-[0.08em]"
+        >
           Trusted by modern CA & tax firms
         </span>
         <div

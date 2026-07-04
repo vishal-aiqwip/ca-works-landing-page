@@ -53,7 +53,10 @@ const ProblemSection = () => {
         </p>
         <div className="grid grid-cols-1 items-stretch gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-14">
           <div className="flex flex-col gap-7">
-            <div className="relative min-h-[400px] flex-1 overflow-hidden rounded-2xl">
+            <div
+              data-reveal
+              className="relative min-h-[400px] flex-1 overflow-hidden rounded-2xl"
+            >
               <Image
                 src="/images/team.webp"
                 alt="CA team at work"
@@ -62,7 +65,7 @@ const ProblemSection = () => {
                 className="object-cover"
               />
             </div>
-            <div>
+            <div data-reveal>
               <h2 className="mb-4 font-bold text-foreground text-xl leading-[1.14] tracking-[-0.025em] md:text-[34px]">
                 Manual client communication is eating your team's day
               </h2>
@@ -73,10 +76,11 @@ const ProblemSection = () => {
               </p>
             </div>
           </div>
-          <div className="flex flex-col gap-3.5">
+          <div className="flex flex-col gap-3.5" data-reveal-group>
             {PROBLEMS.map((p) => (
               <div
                 key={p.title}
+                data-reveal-item
                 className="flex gap-4 rounded-2xl border border-muted-foreground/15 bg-white p-5.5 shadow-[0_1px_2px_rgba(16,34,51,0.04)]"
               >
                 <div
