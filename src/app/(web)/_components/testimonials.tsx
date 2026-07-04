@@ -24,7 +24,7 @@ const QUOTES = [
 const Testimonials = () => {
   return (
     <section className="mx-auto max-w-[1080px] px-4 py-12 sm:px-6 sm:py-21 lg:px-8">
-      <div className="mb-12 text-center">
+      <div data-reveal className="mb-12 text-center">
         <div className="mb-3 font-extrabold text-[13px] text-primary uppercase tracking-[0.1em]">
           Loved by practitioners
         </div>
@@ -32,10 +32,11 @@ const Testimonials = () => {
           What CA firms say
         </h2>
       </div>
-      <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
+      <div className="grid grid-cols-1 gap-5 md:grid-cols-3" data-reveal-group>
         {QUOTES.map((q) => (
           <div
             key={q.name}
+            data-reveal-item
             className="flex flex-col rounded-[18px] border border-[#E9EEF4] bg-white p-7 shadow-[0_1px_2px_rgba(16,34,51,0.04)]"
           >
             <div className="mb-3.5 flex gap-0.5">

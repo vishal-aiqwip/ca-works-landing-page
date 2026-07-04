@@ -78,7 +78,7 @@ const HowItWorks = () => {
   return (
     <section id="channels" className="bg-[#1C2A33] text-white">
       <div className="mx-auto max-w-[95%] px-4 py-12 sm:px-6 sm:py-20 lg:px-8">
-        <div className="mx-auto mb-14 max-w-[60ch] text-center">
+        <div data-reveal className="mx-auto mb-14 max-w-[60ch] text-center">
           <div className="mb-3.5 font-extrabold text-[13px] text-primary uppercase tracking-[0.1em]">
             How it works
           </div>

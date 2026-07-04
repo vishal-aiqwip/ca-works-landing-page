@@ -43,7 +43,7 @@ const FEATURES = [
 const FeaturesSection = () => {
   return (
     <section id="features" className="mx-auto max-w-[95%] px-4 py-12 sm:px-6 sm:py-20 lg:px-8">
-      <div className="mx-auto mb-11 max-w-[54ch] text-center">
+      <div data-reveal className="mx-auto mb-11 max-w-[54ch] text-center">
         <div className="mb-3 font-extrabold text-[13px] text-primary uppercase tracking-[0.1em]">
           Features
         </div>
@@ -52,10 +52,11 @@ const FeaturesSection = () => {
         </h2>
       </div>
       <div className="grid grid-cols-1 items-stretch gap-14 lg:grid-cols-[1.15fr_0.85fr]">
-        <div className="flex flex-col gap-3.5">
+        <div className="flex flex-col gap-3.5" data-reveal-group>
           {FEATURES.map((f) => (
             <div
               key={f.title}
+              data-reveal-item
               className="flex gap-4 rounded-2xl border border-muted-foreground/15 bg-white p-5.5 shadow-[0_1px_2px_rgba(16,34,51,0.04)] transition-[border-color,box-shadow] hover:border-[#C7DDFB] hover:shadow-[0_12px_28px_-14px_rgba(16,34,51,0.22)]"
             >
               <div
@@ -75,7 +76,7 @@ const FeaturesSection = () => {
             </div>
           ))}
         </div>
-        <div className="relative min-h-[400px] self-stretch overflow-hidden rounded-2xl">
+        <div data-reveal className="relative min-h-[400px] self-stretch overflow-hidden rounded-2xl">
           <Image
             src="/images/features.webp"
             alt="CA Works product screenshot"
