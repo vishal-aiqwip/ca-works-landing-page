@@ -15,6 +15,7 @@
     "@ai-sdk/openai": "^3.0.80",
     "@ai-sdk/react": "^3.0.221",
     "@elevenlabs/react": "^1.9.0",
+    "@gsap/react": "^2.1.2",
     "@hookform/resolvers": "^5.4.0",
     "@next/third-parties": "^16.2.10",
     "@radix-ui/react-accordion": "^1.2.15",
