@@ -7,6 +7,7 @@ import Hero from "./_components/hero";
 import HowItWorks from "./_components/how-it-works";
 import ProblemSection from "./_components/problem-section";
 import ProductDemo from "./_components/product-demo";
+import { ScrollReveal } from "./_components/scroll-reveal";
 import Testimonials from "./_components/testimonials";
 import TrustBar from "./_components/trust-bar";
 import ValueProps from "./_components/value-props";
@@ -35,18 +36,21 @@ export const metadata: Metadata = {
 export default async function Home() {
   return (
     <>
+      <ScrollReveal />
+
       <section
         className="border-[#EEF2FA] border-b"
         style={{
-          background: "radial-gradient(120% 90% at 50% -10%, #ECF3FE 0%, #F3F6FD 45%, #fff 100%)",
+          background:
+            "radial-gradient(120% 90% at 50% -10%, #ECF3FE 0%, #F3F6FD 45%, #fff 100%)",
         }}
       >
         <Hero />
 
-        <div className="hidden md:block">
+        <div className="hidden md:block" data-reveal>
           <ProductDemo />
         </div>
-        <div className="px-5 pb-16 md:hidden">
+        <div className="px-5 pb-16 md:hidden" data-reveal>
           <NextImage
             src="/videos/product-view.gif"
             alt="CA Works product preview"
