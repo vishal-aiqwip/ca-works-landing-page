@@ -1,6 +1,7 @@
 import { Bell, Inbox, ListFilter, Repeat, Shuffle } from "lucide-react";
 
-import { Image } from "@/components";
+import { Button } from "@/components";
+import { BOOKING_URL } from "@/config";
 
 const PROBLEMS = [
   {
@@ -42,62 +43,58 @@ const PROBLEMS = [
 
 const ProblemSection = () => {
   return (
-    <section className="bg-white">
+    <section data-problem-section className="bg-white">
       <div className="mx-auto max-w-[95%] px-4 py-10 sm:px-6 sm:py-16 lg:px-8">
-        <div className="mb-4.5 text-center font-extrabold text-[#F0506B] text-[13px] uppercase tracking-[0.1em]">
-          The problem
+        <div
+          data-reveal-group
+          className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-14"
+        >
+          <div data-reveal-item>
+            <div className="mb-4.5 font-extrabold text-[#F0506B] text-[13px] uppercase tracking-[0.1em]">
+              The problem
+            </div>
+            <h2 className="font-bold text-2xl text-foreground leading-[1.14] tracking-[-0.025em] md:text-[34px]">
+              Manual client communication is eating your team's day
+            </h2>
+          </div>
+          <div data-reveal-item className="flex flex-col justify-center gap-6">
+            <p className="text-[17px] text-muted-foreground leading-[1.6]">
+              Your team is losing time following up for documents, sending
+              reminders and answering questions. Every return, every client,
+              every month: the same chasing, collecting and reminding. Done by
+              hand, it never ends and never scales.
+            </p>
+            <div>
+              <Button variant="default-shadow" size="lg" asChild>
+                <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer">
+                  Book a Demo
+                </a>
+              </Button>
+            </div>
+          </div>
         </div>
-        <p className="mx-auto mb-[46px] max-w-[56ch] text-center text-[19px] text-muted-foreground leading-[1.55]">
-          Your team is losing time following up for documents, sending reminders
-          and answering questions.
-        </p>
-        <div className="grid grid-cols-1 items-stretch gap-10 lg:grid-cols-[0.85fr_1.15fr] lg:gap-14">
-          <div className="flex flex-col gap-7">
+
+        <div className="mt-10 flex flex-col gap-3.5 sm:mt-14" data-reveal-group>
+          {PROBLEMS.map((p) => (
             <div
-              data-reveal
-              className="relative min-h-[400px] flex-1 overflow-hidden rounded-2xl"
+              key={p.title}
+              data-reveal-item
+              className="flex gap-4 rounded-2xl border border-muted-foreground/15 bg-white p-5.5 shadow-[0_1px_2px_rgba(16,34,51,0.04)]"
             >
-              <Image
-                src="/images/team.webp"
-                alt="CA team at work"
-                fill
-                quality={100}
-                className="object-cover"
-              />
-            </div>
-            <div data-reveal>
-              <h2 className="mb-4 font-bold text-foreground text-xl leading-[1.14] tracking-[-0.025em] md:text-[34px]">
-                Manual client communication is eating your team's day
-              </h2>
-              <p className="text-[17px] text-muted-foreground leading-[1.6]">
-                Every return, every client, every month: the same chasing,
-                collecting and reminding. Done by hand, it never ends and never
-                scales.
-              </p>
-            </div>
-          </div>
-          <div className="flex flex-col gap-3.5" data-reveal-group>
-            {PROBLEMS.map((p) => (
               <div
-                key={p.title}
-                data-reveal-item
-                className="flex gap-4 rounded-2xl border border-muted-foreground/15 bg-white p-5.5 shadow-[0_1px_2px_rgba(16,34,51,0.04)]"
+                className="flex size-11 flex-none items-center justify-center rounded-xl"
+                style={{ background: p.soft, color: p.tint }}
               >
-                <div
-                  className="flex size-11 flex-none items-center justify-center rounded-xl"
-                  style={{ background: p.soft, color: p.tint }}
-                >
-                  {p.icon}
-                </div>
-                <div>
-                  <h3 className="mb-1.5 font-bold text-[17px]">{p.title}</h3>
-                  <p className="text-[#596B75] text-[14.5px] leading-[1.55]">
-                    {p.body}
-                  </p>
-                </div>
+                {p.icon}
               </div>
-            ))}
-          </div>
+              <div>
+                <h3 className="mb-1.5 font-bold text-[17px]">{p.title}</h3>
+                <p className="text-[#596B75] text-[14.5px] leading-[1.55]">
+                  {p.body}
+                </p>
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>
