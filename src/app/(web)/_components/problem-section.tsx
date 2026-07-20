@@ -153,10 +153,7 @@ const ProblemSection = () => {
           </div>
         </div>
 
-        <div
-          className="mt-10 flex flex-col gap-3.5 sm:mt-14"
-          data-reveal-group
-        >
+        <div className="mt-10 flex flex-col gap-3.5 sm:mt-14" data-reveal-group>
           {PROBLEMS.map((p) => (
             <div
               key={p.title}
