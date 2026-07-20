@@ -3,14 +3,7 @@
 import { useEffect, useState } from "react";
 
 import Autoplay from "embla-carousel-autoplay";
-import {
-  Bell,
-  Inbox,
-  ListFilter,
-  Repeat,
-  Shuffle,
-  Sparkles,
-} from "lucide-react";
+import { Sparkles } from "lucide-react";
 
 import {
   Button,
@@ -24,37 +17,22 @@ import { BOOKING_URL } from "@/config";
 
 const PROBLEMS = [
   {
-    icon: <Repeat size={24} />,
-    soft: "#FDE7EB",
-    tint: "#F0506B",
     title: "Endless follow-ups",
     body: "You reach out three, four, five times for one missing document, and still have to ask again next month.",
   },
   {
-    icon: <Shuffle size={24} />,
-    soft: "#FEF1DC",
-    tint: "#F5A623",
     title: "Documents scattered everywhere",
     body: "Clients send files over WhatsApp, email and drive links: unnamed, out of order and easy to lose track of.",
   },
   {
-    icon: <ListFilter size={24} />,
-    soft: "#ECF3FE",
-    tint: "#0464E4",
     title: "Gathering & sorting by hand",
     body: "Collecting attachments, renaming them, filing them against the right client and chasing what's still missing. Hours gone.",
   },
   {
-    icon: <Bell size={26} />,
-    soft: "#FEF1DC",
-    tint: "#F5A623",
     title: "Reminders typed out one by one",
     body: "Filing deadlines and pending payments need constant nudging, and every message is written and sent manually.",
   },
   {
-    icon: <Inbox size={24} />,
-    soft: "#FDE7EB",
-    tint: "#F0506B",
     title: "It simply doesn't scale",
     body: "Hundreds of clients across every channel, and no team can handle all of that communication manually without things slipping.",
   },
@@ -153,25 +131,16 @@ const ProblemSection = () => {
           </div>
         </div>
 
-        <div className="mt-10 flex flex-col gap-3.5 sm:mt-14" data-reveal-group>
+        <div
+          className="mt-10 grid grid-cols-1 gap-x-10 gap-y-8 sm:mt-14 sm:grid-cols-3"
+          data-reveal-group
+        >
           {PROBLEMS.map((p) => (
-            <div
-              key={p.title}
-              data-reveal-item
-              className="flex gap-4 rounded-2xl border border-muted-foreground/15 bg-white p-5.5 shadow-[0_1px_2px_rgba(16,34,51,0.04)]"
-            >
-              <div
-                className="flex size-11 flex-none items-center justify-center rounded-xl"
-                style={{ background: p.soft, color: p.tint }}
-              >
-                {p.icon}
-              </div>
-              <div>
-                <h3 className="mb-1.5 font-bold text-[17px]">{p.title}</h3>
-                <p className="text-[#596B75] text-[14.5px] leading-[1.55]">
-                  {p.body}
-                </p>
-              </div>
+            <div key={p.title} data-reveal-item>
+              <h3 className="mb-2 font-bold text-[17px]">{p.title}</h3>
+              <p className="text-[#596B75] text-[14.5px] leading-[1.55]">
+                {p.body}
+              </p>
             </div>
           ))}
         </div>
