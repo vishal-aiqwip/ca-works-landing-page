@@ -51,13 +51,13 @@ const PROBLEMS = [
     title: "Reminders typed out one by one",
     body: "Filing deadlines and pending payments need constant nudging, and every message is written and sent manually.",
   },
-  // {
-  //   icon: <Inbox size={24} />,
-  //   soft: "#FDE7EB",
-  //   tint: "#F0506B",
-  //   title: "It simply doesn't scale",
-  //   body: "Hundreds of clients across every channel, and no team can handle all of that communication manually without things slipping.",
-  // },
+  {
+    icon: <Inbox size={24} />,
+    soft: "#FDE7EB",
+    tint: "#F0506B",
+    title: "It simply doesn't scale",
+    body: "Hundreds of clients across every channel, and no team can handle all of that communication manually without things slipping.",
+  },
 ];
 
 const SLIDES = [
@@ -154,7 +154,7 @@ const ProblemSection = () => {
         </div>
 
         <div
-          className="mt-10 grid grid-cols-2 gap-3.5 sm:mt-14"
+          className="mt-10 flex flex-col gap-3.5 sm:mt-14"
           data-reveal-group
         >
           {PROBLEMS.map((p) => (
