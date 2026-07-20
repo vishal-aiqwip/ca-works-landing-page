@@ -1,6 +1,25 @@
-import { Bell, Inbox, ListFilter, Repeat, Shuffle } from "lucide-react";
+"use client";
 
-import { Button } from "@/components";
+import { useEffect, useState } from "react";
+
+import Autoplay from "embla-carousel-autoplay";
+import {
+  Bell,
+  Inbox,
+  ListFilter,
+  Repeat,
+  Shuffle,
+  Sparkles,
+} from "lucide-react";
+
+import {
+  Button,
+  Carousel,
+  type CarouselApi,
+  CarouselContent,
+  CarouselItem,
+  Image,
+} from "@/components";
 import { BOOKING_URL } from "@/config";
 
 const PROBLEMS = [
@@ -32,16 +51,30 @@ const PROBLEMS = [
     title: "Reminders typed out one by one",
     body: "Filing deadlines and pending payments need constant nudging, and every message is written and sent manually.",
   },
-  {
-    icon: <Inbox size={24} />,
-    soft: "#FDE7EB",
-    tint: "#F0506B",
-    title: "It simply doesn't scale",
-    body: "Hundreds of clients across every channel, and no team can handle all of that communication manually without things slipping.",
-  },
+  // {
+  //   icon: <Inbox size={24} />,
+  //   soft: "#FDE7EB",
+  //   tint: "#F0506B",
+  //   title: "It simply doesn't scale",
+  //   body: "Hundreds of clients across every channel, and no team can handle all of that communication manually without things slipping.",
+  // },
+];
+
+const SLIDES = [
+  { src: "/images/team.webp", alt: "CA team at work" },
+  { src: "/images/features.webp", alt: "CA Works product features" },
 ];
 
 const ProblemSection = () => {
+  const [api, setApi] = useState<CarouselApi>();
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  useEffect(() => {
+    if (!api) return;
+    setSelectedIndex(api.selectedScrollSnap());
+    api.on("select", () => setSelectedIndex(api.selectedScrollSnap()));
+  }, [api]);
+
   return (
     <section data-problem-section className="bg-white">
       <div className="mx-auto max-w-[95%] px-4 py-10 sm:px-6 sm:py-16 lg:px-8">
@@ -74,7 +107,56 @@ const ProblemSection = () => {
           </div>
         </div>
 
-        <div className="mt-10 flex flex-col gap-3.5 sm:mt-14" data-reveal-group>
+        <div
+          data-reveal
+          className="relative mt-10 overflow-hidden rounded-[28px] bg-[#EAF2FF] p-6 sm:mt-14 sm:p-10"
+        >
+          <Sparkles
+            className="absolute top-4 right-6 text-[#F5A623] sm:top-6 sm:right-10"
+            size={28}
+          />
+          <Carousel
+            setApi={setApi}
+            opts={{ loop: true }}
+            plugins={[Autoplay({ delay: 4000 })]}
+          >
+            <CarouselContent className="ml-0">
+              {SLIDES.map((slide) => (
+                <CarouselItem key={slide.src} className="pl-0">
+                  <div className="relative h-[280px] overflow-hidden rounded-2xl border border-[#DCE4F0] sm:h-[420px]">
+                    <Image
+                      src={slide.src}
+                      alt={slide.alt}
+                      fill
+                      quality={100}
+                      className="object-cover"
+                    />
+                  </div>
+                </CarouselItem>
+              ))}
+            </CarouselContent>
+          </Carousel>
+          <div className="mt-5 flex items-center justify-center gap-2">
+            {SLIDES.map((slide, index) => (
+              <button
+                key={slide.src}
+                type="button"
+                aria-label={`Go to slide ${index + 1}`}
+                onClick={() => api?.scrollTo(index)}
+                className={
+                  index === selectedIndex
+                    ? "h-2 w-6 rounded-full bg-primary transition-all"
+                    : "h-2 w-2 rounded-full bg-primary/25 transition-all"
+                }
+              />
+            ))}
+          </div>
+        </div>
+
+        <div
+          className="mt-10 grid grid-cols-2 gap-3.5 sm:mt-14"
+          data-reveal-group
+        >
           {PROBLEMS.map((p) => (
             <div
               key={p.title}
