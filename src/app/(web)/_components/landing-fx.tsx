@@ -53,6 +53,11 @@ export function LandingFx({
     if (!root) return;
 
     const mm = gsap.matchMedia();
+    const magneticHandlers: Array<{
+      btn: HTMLAnchorElement;
+      onMove: (e: MouseEvent) => void;
+      reset: () => void;
+    }> = [];
 
     mm.add("(prefers-reduced-motion: no-preference)", () => {
       const q = <T extends Element = HTMLElement>(selector: string) =>
@@ -221,11 +226,6 @@ export function LandingFx({
       }
 
       // Magnetic hover on primary booking CTAs
-      const magneticHandlers: Array<{
-        btn: HTMLAnchorElement;
-        onMove: (e: MouseEvent) => void;
-        reset: () => void;
-      }> = [];
       for (const btn of q<HTMLAnchorElement>('a[href*="cal.com"]')) {
         btn.style.willChange = "transform";
         const strength = 0.35;
