@@ -7,7 +7,6 @@ import Hero from "./_components/hero";
 import HowItWorks from "./_components/how-it-works";
 import ProblemSection from "./_components/problem-section";
 import ProductDemo from "./_components/product-demo";
-import { ScrollReveal } from "./_components/scroll-reveal";
 import Testimonials from "./_components/testimonials";
 import TrustBar from "./_components/trust-bar";
 import ValueProps from "./_components/value-props";
