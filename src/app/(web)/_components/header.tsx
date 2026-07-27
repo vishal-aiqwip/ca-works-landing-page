@@ -1,11 +1,12 @@
 "use client";
 
 import type { Route } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import { Button } from "@/components";
-import { BOOKING_URL } from "@/config";
+import { APP_NAME, BOOKING_URL } from "@/config";
 import { cn } from "@/lib/utils";
 
 const NAV_LINKS = [
@@ -38,14 +39,15 @@ const Header = () => {
             : "max-w-[1240px] rounded-none px-6 py-4 sm:px-10",
         )}
       >
-        <Link
-          href="/"
-          className="flex items-center gap-2.5 font-extrabold text-[22px] text-foreground tracking-[-0.02em]"
-        >
-          <span className="flex size-8 items-center justify-center rounded-[9px] bg-gradient-to-br from-[#3B82F6] to-[#1D4ED8] font-extrabold text-[13px] text-white">
-            CA
-          </span>
-          Works
+        <Link href="/" className="flex items-center">
+          <Image
+            src="/images/logo.png"
+            alt={APP_NAME}
+            width={177}
+            height={56}
+            priority
+            className="h-9 w-auto"
+          />
         </Link>
 
         <nav className="mx-auto hidden items-center gap-7.5 font-medium text-[#334155] text-[15px] md:flex">

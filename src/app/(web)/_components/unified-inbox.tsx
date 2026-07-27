@@ -6,22 +6,22 @@ import { ArrowRight } from "lucide-react";
 const BENTO_IMAGES = [
   {
     id: "ca-ledger",
-    src: "/images/landing/bento-ledger.webp",
+    src: "/images/landing/bento-ledger.png",
     alt: "Client ledger",
   },
   {
     id: "ca-whatsapp",
-    src: "/images/landing/bento-whatsapp.webp",
+    src: "/images/landing/bento-whatsapp.png",
     alt: "WhatsApp API",
   },
   {
     id: "ca-financial",
-    src: "/images/landing/bento-financial.webp",
+    src: "/images/landing/bento-financial.png",
     alt: "Financial report",
   },
   {
     id: "ca-payment",
-    src: "/images/landing/bento-payment.webp",
+    src: "/images/landing/reminder.png",
     alt: "Payment reminder",
   },
 ];

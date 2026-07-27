@@ -1,4 +1,5 @@
 import type { Route } from "next";
+import Image from "next/image";
 import Link from "next/link";
 
 import { Button, Separator } from "@/components";
@@ -39,14 +40,14 @@ const Footer = () => {
       <div className="mx-auto max-w-[1200px] px-6 py-14 sm:px-10">
         <div className="flex flex-col items-start justify-between gap-10 border-[#F1F5F9] border-b pb-10 sm:flex-row">
           <div className="max-w-[340px]">
-            <Link
-              href="/"
-              className="flex items-center gap-2.5 font-extrabold text-[20px] text-foreground tracking-[-0.02em]"
-            >
-              <span className="flex size-[30px] items-center justify-center rounded-[9px] bg-gradient-to-br from-[#3B82F6] to-[#1D4ED8] font-extrabold text-[12px] text-white">
-                CA
-              </span>
-              Works
+            <Link href="/" className="flex items-center">
+              <Image
+                src="/images/logo.png"
+                alt={APP_NAME}
+                width={177}
+                height={56}
+                className="h-8 w-auto"
+              />
             </Link>
             <p className="mt-4 text-[#64748B] text-[14.5px] leading-[1.55]">
               The AI client communication layer for chartered accountants across
