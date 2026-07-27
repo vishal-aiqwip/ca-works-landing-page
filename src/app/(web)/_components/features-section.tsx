@@ -6,11 +6,11 @@ const PILLS = [
     body: "WhatsApp + Email for every client, in one thread.",
     active: false,
   },
-  {
-    title: "AI replies",
-    body: "Accurate answers to routine questions, in your voice.",
-    active: true,
-  },
+  // {
+  //   title: "AI replies",
+  //   body: "Accurate answers to routine questions, in your voice.",
+  //   active: true,
+  // },
   {
     title: "Automated follow-ups",
     body: "Reminders for documents, deadlines and payments.",
@@ -66,7 +66,7 @@ const FeaturesSection = () => {
 
         <div
           data-reveal-group
-          className="mt-11 grid grid-cols-1 gap-4 text-left sm:grid-cols-2 lg:grid-cols-4"
+          className="mt-11 grid grid-cols-1 gap-4 text-left sm:grid-cols-2 lg:grid-cols-3"
         >
           {PILLS.map((p) => (
             <div

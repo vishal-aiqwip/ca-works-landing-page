@@ -32,15 +32,14 @@ const Hero = () => {
           data-hero-item
           className="mx-auto mt-5.5 max-w-[860px] text-balance font-extrabold text-[36px] text-foreground leading-[1.06] tracking-[-0.02em] sm:text-[52px] lg:text-[64px] lg:leading-[1.03]"
         >
-          The AI client communication layer for CA firms
+          Stop losing time on repetitive client communications
         </h1>
         <p
           data-hero-item
           className="mx-auto mt-6.5 max-w-[600px] text-[17px] text-muted-foreground leading-[1.55] sm:text-[19px]"
         >
-          CA Works handles client conversations, document collection and
-          reminders across Email &amp; WhatsApp — so your team stops chasing and
-          starts focusing on real work.
+          CA Works helps to manage client communications across various channels
+          like Email & WhatsApp
         </p>
         <div
           data-hero-item

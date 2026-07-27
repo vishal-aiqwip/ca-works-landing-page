@@ -9,7 +9,7 @@ import { cn } from "@/lib/utils";
 
 const NAV_LINKS = [
   { label: "Features", href: "#features" },
-  { label: "Channels", href: "#channels" },
+  // { label: "Channels", href: "#channels" },
   { label: "How it works", href: "#how" },
   { label: "Contact", href: "#contact" },
 ];
@@ -44,7 +44,7 @@ const Header = () => {
           <span className="flex size-8 items-center justify-center rounded-[9px] bg-gradient-to-br from-[#3B82F6] to-[#1D4ED8] font-extrabold text-[13px] text-white">
             CA
           </span>
-          {APP_NAME}
+          Works
         </Link>
 
         <nav className="mx-auto hidden items-center gap-7.5 font-medium text-[#334155] text-[15px] md:flex">

@@ -44,7 +44,7 @@ const Footer = () => {
               <span className="flex size-[30px] items-center justify-center rounded-[9px] bg-gradient-to-br from-[#3B82F6] to-[#1D4ED8] font-extrabold text-[12px] text-white">
                 CA
               </span>
-              {APP_NAME}
+              Works
             </Link>
             <p className="mt-4 text-[#64748B] text-[14.5px] leading-[1.55]">
               The AI client communication layer for chartered accountants across
