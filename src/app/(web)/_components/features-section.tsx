@@ -152,7 +152,7 @@ const FeaturesSection = () => {
             <div className="flex h-11 items-end gap-1.25">
               {[40, 55, 48, 72, 88, 100].map((h, i) => (
                 <span
-                  key={`bar-${h}-${i}`}
+                  key={`bar-${h}`}
                   className="flex-1 rounded-[3px] bg-primary"
                   style={{ height: `${h}%`, opacity: 0.35 + (i / 6) * 0.65 }}
                 />
