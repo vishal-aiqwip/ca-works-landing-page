@@ -148,25 +148,6 @@ export function LandingFx({
         });
       }
 
-      // Image parallax inside reveal containers
-      for (const el of q("[data-parallax-img]")) {
-        gsap.set(el, { scale: 1.12 });
-        gsap.fromTo(
-          el,
-          { yPercent: -6 },
-          {
-            yPercent: 6,
-            ease: "none",
-            scrollTrigger: {
-              trigger: el.parentElement ?? el,
-              start: "top bottom",
-              end: "bottom top",
-              scrub: true,
-            },
-          },
-        );
-      }
-
       // Hero glow blob parallax
       const blob = root.querySelector<HTMLElement>("[data-blob]");
       if (blob) {
