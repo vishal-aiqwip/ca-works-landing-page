@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { ArrowRight } from "lucide-react";
 
 const SIGNALS = [
@@ -73,13 +75,13 @@ const TriageSection = () => {
             right client and task. Routine questions are answered automatically;
             anything sensitive is escalated to your team with full context.
           </p>
-          <a
-            href="#how"
+          <Link
+            href="/#how"
             className="mt-7 inline-flex items-center gap-1.5 rounded-xl bg-[#0F172A] px-5.5 py-3.5 font-bold text-[15px] text-white"
           >
             See how it works
             <ArrowRight size={16} />
-          </a>
+          </Link>
         </div>
       </div>
     </section>

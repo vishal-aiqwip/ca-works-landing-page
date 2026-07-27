@@ -1,5 +1,6 @@
 "use client";
 
+import type { Route } from "next";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 
@@ -8,9 +9,9 @@ import { BOOKING_URL } from "@/config";
 import { cn } from "@/lib/utils";
 
 const NAV_LINKS = [
-  { label: "Features", href: "#features" },
-  // { label: "Channels", href: "#channels" },
-  { label: "How it works", href: "#how" },
+  { label: "Features", href: "/#features" },
+  // { label: "Channels", href: "/#channels" },
+  { label: "How it works", href: "/#how" },
   { label: "Contact", href: "#contact" },
 ];
 
@@ -49,13 +50,13 @@ const Header = () => {
 
         <nav className="mx-auto hidden items-center gap-7.5 font-medium text-[#334155] text-[15px] md:flex">
           {NAV_LINKS.map((link) => (
-            <a
+            <Link
               key={link.href}
-              href={link.href}
+              href={link.href as Route}
               className="hover:text-foreground"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
         </nav>
 

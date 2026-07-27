@@ -1,3 +1,4 @@
+import type { Route } from "next";
 import Link from "next/link";
 
 import { Button, Separator } from "@/components";
@@ -7,9 +8,9 @@ const FOOTER_COLUMNS = [
   {
     title: "PRODUCT",
     links: [
-      { label: "Features", href: "#features" },
-      { label: "Channels", href: "#channels" },
-      { label: "Pricing", href: "#pricing" },
+      { label: "Features", href: "/#features" },
+      { label: "Channels", href: "/#channels" },
+      { label: "Pricing", href: "/#pricing" },
       { label: "Book a demo", href: BOOKING_URL },
     ],
   },
@@ -69,16 +70,29 @@ const Footer = () => {
                 {column.title}
               </div>
               <ul className="flex flex-col gap-3">
-                {column.links.map((link) => (
-                  <li key={link.label}>
-                    <a
-                      href={link.href}
-                      className="text-[#64748B] text-[14px] transition-colors hover:text-foreground"
-                    >
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
+                {column.links.map((link) =>
+                  link.href.startsWith("http") ? (
+                    <li key={link.label}>
+                      <a
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-[#64748B] text-[14px] transition-colors hover:text-foreground"
+                      >
+                        {link.label}
+                      </a>
+                    </li>
+                  ) : (
+                    <li key={link.label}>
+                      <Link
+                        href={link.href as Route}
+                        className="text-[#64748B] text-[14px] transition-colors hover:text-foreground"
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  ),
+                )}
               </ul>
             </div>
           ))}

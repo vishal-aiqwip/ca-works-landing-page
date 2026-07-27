@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 
 import { ArrowRight } from "lucide-react";
 
@@ -65,13 +66,13 @@ const UnifiedInbox = () => {
               read, classified and matched to the right client and task, so your
               team never switches apps or loses context again.
             </p>
-            <a
-              href="#features"
+            <Link
+              href="/#features"
               className="mt-7 inline-flex items-center gap-1.5 rounded-xl bg-[#0F172A] px-5.5 py-3.5 font-bold text-[15px] text-white"
             >
               Explore the inbox
               <ArrowRight size={16} />
-            </a>
+            </Link>
           </div>
         </div>
 

@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 import { Button } from "@/components";
 import { BOOKING_URL } from "@/config";
 
@@ -60,7 +62,7 @@ const Hero = () => {
             className="rounded-xl border-[#E2E8F0] px-6.5 py-6 text-[16px] text-foreground"
             asChild
           >
-            <a href="#pricing">View pricing</a>
+            <Link href="/#pricing">View pricing</Link>
           </Button>
         </div>
         <div
