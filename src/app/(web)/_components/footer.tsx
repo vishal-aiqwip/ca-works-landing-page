@@ -1,11 +1,11 @@
 import Link from "next/link";
 
-import { Separator } from "@/components";
+import { Button, Separator } from "@/components";
 import { APP_NAME, BOOKING_URL } from "@/config";
 
 const FOOTER_COLUMNS = [
   {
-    title: "Product",
+    title: "PRODUCT",
     links: [
       { label: "Features", href: "#features" },
       { label: "Channels", href: "#channels" },
@@ -14,7 +14,7 @@ const FOOTER_COLUMNS = [
     ],
   },
   {
-    title: "Company",
+    title: "COMPANY",
     links: [
       { label: "About", href: "/about" },
       { label: "Blog", href: "/blog" },
@@ -22,7 +22,7 @@ const FOOTER_COLUMNS = [
     ],
   },
   {
-    title: "Legal",
+    title: "LEGAL",
     links: [
       { label: "Terms", href: "/terms" },
       { label: "Privacy", href: "/privacy" },
@@ -33,31 +33,46 @@ const FOOTER_COLUMNS = [
 
 const Footer = () => {
   return (
-    <footer className="dark bg-[rgb(28,42,51)] text-foreground">
-      <div className="mx-auto max-w-7xl px-4 py-16 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 gap-10 md:grid-cols-[2fr_1fr_1fr_1fr]">
-          <div>
-            <Link href="/" className="flex items-center gap-2">
-              <span className="flex size-8 items-center justify-center rounded-full bg-white font-bold text-primary text-xs">
+    <footer id="contact" className="border-[#F1F5F9] border-t bg-white">
+      <div className="mx-auto max-w-[1200px] px-6 py-14 sm:px-10">
+        <div className="flex flex-col items-start justify-between gap-10 border-[#F1F5F9] border-b pb-10 sm:flex-row">
+          <div className="max-w-[340px]">
+            <Link
+              href="/"
+              className="flex items-center gap-2.5 font-extrabold text-[20px] text-foreground tracking-[-0.02em]"
+            >
+              <span className="flex size-[30px] items-center justify-center rounded-[9px] bg-gradient-to-br from-[#3B82F6] to-[#1D4ED8] font-extrabold text-[12px] text-white">
                 CA
               </span>
-              <span className="font-bold text-lg">{APP_NAME}</span>
+              {APP_NAME}
             </Link>
-            <p className="mt-4 max-w-xs text-muted-foreground text-sm">
+            <p className="mt-4 text-[#64748B] text-[14.5px] leading-[1.55]">
               The AI client communication layer for chartered accountants across
-              Email & WhatsApp.
+              Email &amp; WhatsApp.
             </p>
           </div>
+          <Button
+            className="flex-none rounded-[11px] px-5.5 py-3 text-[14.5px] shadow-[0_2px_6px_rgba(4,100,228,0.35)]"
+            asChild
+          >
+            <a href={BOOKING_URL} target="_blank" rel="noopener noreferrer">
+              Book a demo
+            </a>
+          </Button>
+        </div>
 
+        <div className="grid grid-cols-1 gap-8 pt-10 sm:grid-cols-3">
           {FOOTER_COLUMNS.map((column) => (
             <div key={column.title}>
-              <h3 className="font-semibold text-sm">{column.title}</h3>
-              <ul className="mt-4 space-y-3">
+              <div className="mb-4 font-bold text-[12px] text-foreground tracking-[0.06em]">
+                {column.title}
+              </div>
+              <ul className="flex flex-col gap-3">
                 {column.links.map((link) => (
                   <li key={link.label}>
                     <a
                       href={link.href}
-                      className="text-muted-foreground text-sm transition-colors hover:text-foreground"
+                      className="text-[#64748B] text-[14px] transition-colors hover:text-foreground"
                     >
                       {link.label}
                     </a>
@@ -68,9 +83,9 @@ const Footer = () => {
           ))}
         </div>
 
-        <Separator className="my-10" />
+        <Separator className="mt-10 mb-6 bg-[#F1F5F9]" />
 
-        <p className="text-center text-muted-foreground text-sm">
+        <p className="text-[#94A3B8] text-[13.5px]">
           © 2026 {APP_NAME}. All rights reserved.
         </p>
       </div>
