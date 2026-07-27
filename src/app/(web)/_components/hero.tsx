@@ -62,7 +62,7 @@ const Hero = () => {
             className="rounded-xl border-[#E2E8F0] px-6.5 py-6 text-[16px] text-foreground"
             asChild
           >
-            <Link href="/#pricing">View pricing</Link>
+            <Link href="/pricing">View pricing</Link>
           </Button>
         </div>
         <div

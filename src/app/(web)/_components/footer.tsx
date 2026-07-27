@@ -10,7 +10,7 @@ const FOOTER_COLUMNS = [
     links: [
       { label: "Features", href: "/#features" },
       { label: "Channels", href: "/#channels" },
-      { label: "Pricing", href: "/#pricing" },
+      { label: "Pricing", href: "/pricing" },
       { label: "Book a demo", href: BOOKING_URL },
     ],
   },
@@ -19,7 +19,7 @@ const FOOTER_COLUMNS = [
     links: [
       { label: "About", href: "/about" },
       { label: "Blog", href: "/blog" },
-      { label: "Contact", href: "#contact" },
+      { label: "Contact", href: "/contact" },
     ],
   },
   {
@@ -35,7 +35,7 @@ const FOOTER_COLUMNS = [
 
 const Footer = () => {
   return (
-    <footer id="contact" className="border-[#F1F5F9] border-t bg-white">
+    <footer className="border-[#F1F5F9] border-t bg-white">
       <div className="mx-auto max-w-[1200px] px-6 py-14 sm:px-10">
         <div className="flex flex-col items-start justify-between gap-10 border-[#F1F5F9] border-b pb-10 sm:flex-row">
           <div className="max-w-[340px]">

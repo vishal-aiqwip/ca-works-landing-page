@@ -12,7 +12,7 @@ const NAV_LINKS = [
   { label: "Features", href: "/#features" },
   // { label: "Channels", href: "/#channels" },
   { label: "How it works", href: "/#how" },
-  { label: "Contact", href: "#contact" },
+  { label: "Contact", href: "/contact" },
 ];
 
 const Header = () => {

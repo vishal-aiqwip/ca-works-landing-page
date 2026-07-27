@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 const FAQS = [
   {
     q: "What is CA Works?",
@@ -36,9 +38,9 @@ const FaqSection = () => {
       </h2>
       <p className="mt-3.5 mb-11 text-[#475569] text-[17px]">
         If you have anything else you'd like to ask,{" "}
-        <a href="#contact" className="font-semibold">
+        <Link href="/contact" className="font-semibold">
           reach out to us
-        </a>
+        </Link>
         .
       </p>
       <div

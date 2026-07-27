@@ -1,12 +1,11 @@
+import Link from "next/link";
+
 import { Button } from "@/components";
 import { BOOKING_URL } from "@/config";
 
 const CtaSection = () => {
   return (
-    <section
-      id="pricing"
-      className="mx-auto mt-10 max-w-[1200px] px-6 sm:px-10"
-    >
+    <section className="mx-auto mt-10 max-w-[1200px] px-6 sm:px-10">
       <div
         data-reveal-scale
         className="relative overflow-hidden rounded-[26px] bg-[url('/images/landing/cta-bg.jpg')] bg-center bg-cover px-6 py-16 text-center text-white sm:px-10 sm:py-20"
@@ -49,7 +48,7 @@ const CtaSection = () => {
               className="rounded-xl border border-white/32 bg-white/14 px-7 py-6 text-[16px] text-white hover:bg-white/22 hover:text-white"
               asChild
             >
-              <a href="#contact">Contact us</a>
+              <Link href="/contact">Contact us</Link>
             </Button>
           </div>
         </div>

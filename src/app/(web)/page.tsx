@@ -17,7 +17,7 @@ import TrustBar from "./_components/trust-bar";
 import UnifiedInbox from "./_components/unified-inbox";
 
 export const metadata: Metadata = {
-  title: "",
+  title: "Home",
   description: "",
   alternates: {
     canonical: "https://www.caworks.ai",
