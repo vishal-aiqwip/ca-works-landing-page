@@ -39,11 +39,11 @@ export default function DataDeletionPage() {
           professionals with a direct {APP_NAME} account.
         </li>
         <li>
-          <strong>Clients of a Firm</strong> — if you exchanged WhatsApp or
-          Email messages with an accounting/tax firm that uses {APP_NAME}, you
-          may request deletion of your own communication data as explained
-          below. Because the Firm controls that data, we may ask the Firm to
-          confirm the request before we act on it.
+          <strong>Clients of a Firm</strong> — if you exchanged WhatsApp
+          messages with an accounting/tax firm that uses {APP_NAME}, you may
+          request deletion of your own communication data as explained below.
+          Because the Firm controls that data, we may ask the Firm to confirm
+          the request before we act on it.
         </li>
       </ul>
 
@@ -53,8 +53,8 @@ export default function DataDeletionPage() {
       <ul className="list-disc space-y-2 pl-6 text-[#475569] leading-[1.7]">
         <li>Your account profile information (name, email, phone number).</li>
         <li>
-          Message content and attachments exchanged via WhatsApp or Email
-          through the Service.
+          Message content and attachments exchanged via WhatsApp through the
+          Service.
         </li>
         <li>Usage logs and analytics tied to your identity, where feasible.</li>
       </ul>

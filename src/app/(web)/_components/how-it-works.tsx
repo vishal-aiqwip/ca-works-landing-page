@@ -2,7 +2,7 @@ const STEPS = [
   {
     num: "1",
     title: "Connect your channels",
-    body: "Link your firm's WhatsApp Business number and email inbox in minutes. No new app for clients to install.",
+    body: "Link your firm's WhatsApp Business number in minutes. No new app for clients to install.",
   },
   {
     num: "2",

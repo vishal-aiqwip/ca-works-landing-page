@@ -28,8 +28,8 @@ export default function PrivacyPolicyPage() {
         This Privacy Policy explains how {LEGAL_ENTITY_NAME} ("{APP_NAME}",
         "we", "us" or "our") collects, uses, discloses and safeguards
         information when you use our client-communication platform for chartered
-        accountants and tax practices, which connects Email and the WhatsApp
-        Business Platform into a single inbox ("Service").
+        accountants and tax practices, which connects the WhatsApp Business
+        Platform into a single inbox ("Service").
       </p>
 
       {/* <div className="mt-6 rounded-xl border border-[#FDE68A] bg-[#FFFBEB] p-5 text-[#92400E] text-sm leading-[1.6]">
@@ -58,9 +58,9 @@ export default function PrivacyPolicyPage() {
         <li>
           <strong>Client communication data</strong> — messages, documents and
           contact details belonging to the Firm's own clients, sent or received
-          through WhatsApp or Email while the Firm uses the Service. For this
-          data, the Firm is the <strong>data controller</strong> and we act only
-          as a <strong>data processor</strong> on the Firm's instructions.
+          through WhatsApp while the Firm uses the Service. For this data, the
+          Firm is the <strong>data controller</strong> and we act only as a{" "}
+          <strong>data processor</strong> on the Firm's instructions.
         </li>
       </ul>
       <p className="mt-4 text-[#475569] leading-[1.7]">
@@ -80,8 +80,8 @@ export default function PrivacyPolicyPage() {
         <li>
           <strong>Communication content:</strong> messages, attachments,
           documents and metadata (timestamps, delivery/read status, channel)
-          sent or received via the WhatsApp Business Platform or Email through
-          the Service.
+          sent or received via the WhatsApp Business Platform through the
+          Service.
         </li>
         <li>
           <strong>Usage data:</strong> log data, device and browser information,

@@ -3,7 +3,7 @@ import { BOOKING_URL } from "@/config";
 const PILLS = [
   {
     title: "Unified inbox",
-    body: "WhatsApp + Email for every client, in one thread.",
+    body: "WhatsApp for every client, in one thread.",
     active: false,
   },
   // {
@@ -27,7 +27,7 @@ const REMINDERS = [
   {
     color: "#22C55E",
     label: "GSTR-3B due in 3 days",
-    meta: "WhatsApp + Email",
+    meta: "WhatsApp",
   },
   {
     color: "#2563EB",

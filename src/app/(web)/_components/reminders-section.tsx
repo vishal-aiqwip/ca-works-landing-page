@@ -31,7 +31,7 @@ const RemindersSection = () => {
           >
             Filing deadlines, missing documents and pending payments need
             constant nudging. CA Works schedules and sends every reminder over
-            WhatsApp and email — so your team never chases by hand again.
+            WhatsApp — so your team never chases by hand again.
           </p>
           <a
             href={BOOKING_URL}

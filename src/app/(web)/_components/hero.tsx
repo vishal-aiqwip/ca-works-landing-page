@@ -40,8 +40,7 @@ const Hero = () => {
           data-hero-item
           className="mx-auto mt-6.5 max-w-[600px] text-[17px] text-muted-foreground leading-[1.55] sm:text-[19px]"
         >
-          CA Works helps to manage client communications across various channels
-          like Email & WhatsApp
+          CA Works helps to manage client communications over WhatsApp
         </p>
         <div
           data-hero-item

@@ -50,10 +50,10 @@ export default function TermsPage() {
       </h2>
       <p className="text-[#475569] leading-[1.7]">
         {APP_NAME} is a client-communication layer for chartered accountants and
-        tax practices. It unifies Email and the WhatsApp Business Platform into
-        a single inbox, helps classify and route incoming messages, drafts
-        responses, collects documents, and sends automated reminders on the
-        Firm's behalf and instructions.
+        tax practices. It unifies the WhatsApp Business Platform into a single
+        inbox, helps classify and route incoming messages, drafts responses,
+        collects documents, and sends automated reminders on the Firm's behalf
+        and instructions.
       </p>
 
       <h2 className="mt-10 mb-3 font-bold text-[22px] text-foreground">
@@ -76,7 +76,7 @@ export default function TermsPage() {
       <ul className="mt-4 list-disc space-y-2 pl-6 text-[#475569] leading-[1.7]">
         <li>
           Having a lawful basis and, where required, consent to message your
-          clients over WhatsApp and Email;
+          clients over WhatsApp;
         </li>
         <li>
           Complying with WhatsApp Business Platform's messaging and commerce

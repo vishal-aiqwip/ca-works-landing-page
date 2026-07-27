@@ -80,8 +80,8 @@ const ChannelsSection = () => {
         data-reveal
         className="mx-auto mt-4.5 max-w-[600px] text-[#475569] text-[18px] leading-[1.55]"
       >
-        WhatsApp and email flow into one board, so nothing slips between apps,
-        threads or team members.
+        WhatsApp flows into one board, so nothing slips between threads or team
+        members.
       </p>
 
       <div

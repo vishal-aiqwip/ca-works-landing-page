@@ -31,7 +31,7 @@ const QUOTES = [
     initials: "SA",
     from: "#FBBF24",
     to: "#D97706",
-    text: "Finally, one place for WhatsApp and email. Nothing slips between the team any more.",
+    text: "Finally, one place for every WhatsApp thread. Nothing slips between the team any more.",
   },
   {
     name: "Verma LLP",

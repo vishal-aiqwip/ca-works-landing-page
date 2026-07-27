@@ -50,8 +50,8 @@ const Footer = () => {
               />
             </Link>
             <p className="mt-4 text-[#64748B] text-[14.5px] leading-[1.55]">
-              The AI client communication layer for chartered accountants across
-              Email &amp; WhatsApp.
+              The AI client communication layer for chartered accountants over
+              WhatsApp.
             </p>
           </div>
           <Button

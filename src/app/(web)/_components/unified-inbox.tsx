@@ -29,7 +29,7 @@ const BENTO_IMAGES = [
 const BLURBS = [
   {
     title: "One thread per client",
-    body: "Every WhatsApp and email message from a client, together in one place — no more scattered context.",
+    body: "Every WhatsApp message from a client, together in one place — no more scattered context.",
   },
   {
     title: "Replies in your voice",
@@ -62,9 +62,9 @@ const UnifiedInbox = () => {
           </div>
           <div>
             <p className="mt-1.5 text-[#334155] text-[16.5px] leading-[1.6]">
-              WhatsApp and Email for every client land in a single thread —
-              read, classified and matched to the right client and task, so your
-              team never switches apps or loses context again.
+              Every WhatsApp message from every client lands in a single thread
+              — read, classified and matched to the right client and task, so
+              your team never switches apps or loses context again.
             </p>
             <Link
               href="/#features"
