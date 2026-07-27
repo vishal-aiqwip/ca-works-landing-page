@@ -1,33 +1,58 @@
+"use client";
+
 import Link from "next/link";
+import { useEffect, useState } from "react";
 
 import { Button } from "@/components";
 import { APP_NAME, BOOKING_URL } from "@/config";
+import { cn } from "@/lib/utils";
 
 const NAV_LINKS = [
   { label: "Features", href: "#features" },
-  { label: "Pricing", href: "#pricing" },
-  { label: "Contact Us", href: "#contact" },
+  { label: "Channels", href: "#channels" },
+  { label: "How it works", href: "#how" },
+  { label: "Contact", href: "#contact" },
 ];
 
 const Header = () => {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 100);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
   return (
-    <header className="sticky top-0 z-50 border-b bg-background">
-      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 lg:px-8">
-        <Link href="/" className="flex items-center gap-2">
-          <span className="flex size-8 items-center justify-center rounded-full bg-primary font-bold text-primary-foreground text-xs">
+    <header
+      className="sticky top-0 z-50 transition-[padding-top] duration-300 ease-out"
+      style={{ paddingTop: scrolled ? 10 : 0 }}
+    >
+      <div
+        className={cn(
+          "mx-auto flex items-center gap-4 border border-transparent bg-white/85 backdrop-blur-md transition-all duration-300 ease-out",
+          scrolled
+            ? "max-w-[860px] rounded-xl border-[#E6EAF2] px-5.5 py-2.5 shadow-[0_12px_30px_-14px_rgba(15,23,42,0.22)]"
+            : "max-w-[1240px] rounded-none px-6 py-4 sm:px-10",
+        )}
+      >
+        <Link
+          href="/"
+          className="flex items-center gap-2.5 font-extrabold text-[22px] text-foreground tracking-[-0.02em]"
+        >
+          <span className="flex size-8 items-center justify-center rounded-[9px] bg-gradient-to-br from-[#3B82F6] to-[#1D4ED8] font-extrabold text-[13px] text-white">
             CA
           </span>
-          <span className="font-bold text-foreground text-lg">
-            {APP_NAME}
-          </span>
+          {APP_NAME}
         </Link>
 
-        <nav className="hidden items-center gap-8 md:flex">
+        <nav className="mx-auto hidden items-center gap-7.5 font-medium text-[#334155] text-[15px] md:flex">
           {NAV_LINKS.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="text-muted-foreground text-sm transition-colors hover:text-foreground"
+              className="hover:text-foreground"
             >
               {link.label}
             </a>
@@ -35,7 +60,12 @@ const Header = () => {
         </nav>
 
         <div className="flex items-center gap-3">
-          <Button variant="secondary" size="lg" className="hidden sm:inline-flex" asChild>
+          <Button
+            variant="secondary"
+            size="lg"
+            className="hidden sm:inline-flex"
+            asChild
+          >
             <a href="/login">Log in</a>
           </Button>
           <Button variant="default-shadow" size="lg" asChild>
