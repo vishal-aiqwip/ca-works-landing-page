@@ -36,13 +36,11 @@ export const metadata: Metadata = {
 export default async function Home() {
   return (
     <>
-      <ScrollReveal />
-
       <section
         className="border-[#EEF2FA] border-b"
         style={{
           background:
-            "radial-gradient(120% 90% at 50% -10%, #ECF3FE 0%, #F3F6FD 45%, #fff 100%)",
+            "radial-gradient(85% 75% at 50% 60%, #7FB0FF 0%, #C3DBFF 35%, #EDF4FF 65%, #ffffff 100%)",
         }}
       >
         <Hero />
