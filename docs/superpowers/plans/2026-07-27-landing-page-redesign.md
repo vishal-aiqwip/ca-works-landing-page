@@ -67,16 +67,14 @@ git commit -m "feat: add landing page image assets from reference design"
 - Delete: `src/app/(web)/_components/scroll-reveal.tsx` (superseded by this file; confirmed unused by any other route — see Task 15)
 
 **Interfaces:**
-- Produces: `LandingFx` component, `import { LandingFx } from "./landing-fx"`, props `{ rootRef: RefObject<HTMLDivElement | null> }`. Renders `null`; side-effect only.
-- Consumed by: Task 15 (`page.tsx`), which creates the root ref and passes it in.
-- Marker attributes this component reacts to (used by every later section task): `data-hero-item`, `data-reveal`, `data-reveal-heading`, `data-reveal-scale`, `data-reveal-group` (wrapping `data-reveal-item` children), `data-parallax-img` (image inside a `data-reveal`/`data-reveal-scale` container), `data-blob` (hero background glow), `data-marquee` (the scrolling marquee track). Also auto-targets every `a[href*="cal.com"]` for magnetic hover.
+- Produces: `LandingFx` component, `import { LandingFx } from "./landing-fx"`, no props. Renders `null`; side-effect only. Queries `document` directly rather than an externally-passed ancestor ref — a ref on this component's own parent `<div>` is still `null` when this component's `useGSAP` layout effect runs, since React commits child layout effects before the parent's own ref gets attached in the same commit.
+- Consumed by: Task 15 (`page.tsx`), which mounts it once (no props needed).
+- Marker attributes this component reacts to (used by every later section task): `data-hero-item`, `data-reveal`, `data-reveal-heading`, `data-reveal-scale`, `data-reveal-group` (wrapping `data-reveal-item` children), `data-blob` (hero background glow), `data-marquee` (the scrolling marquee track). Also auto-targets every `a[href*="cal.com"]` for magnetic hover.
 
 - [ ] **Step 1: Write `landing-fx.tsx`**
 
 ```tsx
 "use client";
-
-import { type RefObject } from "react";
 
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
@@ -115,27 +113,31 @@ function splitWords(el: HTMLElement) {
 /**
  * Mounted once at the root of the landing page. Ports the reference
  * mockup's bespoke GSAP behavior: masked headline/heading reveal, hero
- * intro stagger, scroll-triggered fade-ups, card-group stagger, image/blob
+ * intro stagger, scroll-triggered fade-ups, card-group stagger, blob
  * parallax, a scroll-velocity-reactive marquee, and magnetic CTA hover.
  * Renders nothing.
+ *
+ * Queries `document` directly rather than an ancestor ref: this component
+ * only ever mounts once, as the first child of the page's root element, and
+ * React's commit phase runs child layout effects before the parent's own
+ * ref gets attached — so a ref on that ancestor div is still null when this
+ * effect fires.
  */
-export function LandingFx({
-  rootRef,
-}: {
-  rootRef: RefObject<HTMLDivElement | null>;
-}) {
+export function LandingFx() {
   useGSAP(() => {
-    const root = rootRef.current;
-    if (!root) return;
-
     const mm = gsap.matchMedia();
+    const magneticHandlers: Array<{
+      btn: HTMLAnchorElement;
+      onMove: (e: MouseEvent) => void;
+      reset: () => void;
+    }> = [];
 
     mm.add("(prefers-reduced-motion: no-preference)", () => {
       const q = <T extends Element = HTMLElement>(selector: string) =>
-        Array.from(root.querySelectorAll<T>(selector));
+        Array.from(document.querySelectorAll<T>(selector));
 
       // Hero headline: masked word-by-word rise on load
-      const h1 = root.querySelector<HTMLElement>("h1");
+      const h1 = document.querySelector<HTMLElement>("h1");
       const heroWords = h1 ? splitWords(h1) : [];
       gsap.set(heroWords, { yPercent: 115 });
 
@@ -154,7 +156,13 @@ export function LandingFx({
       if (heroItems.length) {
         introTl.to(
           heroItems,
-          { opacity: 1, y: 0, duration: 0.9, stagger: 0.12, ease: "power3.out" },
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.9,
+            stagger: 0.12,
+            ease: "power3.out",
+          },
           heroWords.length ? "-=.7" : 0,
         );
       }
@@ -213,27 +221,8 @@ export function LandingFx({
         });
       }
 
-      // Image parallax inside reveal containers
-      for (const el of q("[data-parallax-img]")) {
-        gsap.set(el, { scale: 1.12 });
-        gsap.fromTo(
-          el,
-          { yPercent: -6 },
-          {
-            yPercent: 6,
-            ease: "none",
-            scrollTrigger: {
-              trigger: el.parentElement ?? el,
-              start: "top bottom",
-              end: "bottom top",
-              scrub: true,
-            },
-          },
-        );
-      }
-
       // Hero glow blob parallax
-      const blob = root.querySelector<HTMLElement>("[data-blob]");
+      const blob = document.querySelector<HTMLElement>("[data-blob]");
       if (blob) {
         gsap.to(blob, {
           yPercent: 26,
@@ -249,7 +238,7 @@ export function LandingFx({
       }
 
       // Marquee driven by scroll velocity
-      const marquee = root.querySelector<HTMLElement>("[data-marquee]");
+      const marquee = document.querySelector<HTMLElement>("[data-marquee]");
       if (marquee) {
         const half = marquee.scrollWidth / 2;
         const loop = gsap.to(marquee, {
@@ -306,13 +295,25 @@ export function LandingFx({
           });
         };
         const reset = () =>
-          gsap.to(btn, { x: 0, y: 0, duration: 0.5, ease: "elastic.out(1,.4)" });
+          gsap.to(btn, {
+            x: 0,
+            y: 0,
+            duration: 0.5,
+            ease: "elastic.out(1,.4)",
+          });
         btn.addEventListener("mousemove", onMove);
         btn.addEventListener("mouseleave", reset);
+        magneticHandlers.push({ btn, onMove, reset });
       }
     });
 
-    return () => mm.revert();
+    return () => {
+      magneticHandlers.forEach(({ btn, onMove, reset }) => {
+        btn.removeEventListener("mousemove", onMove);
+        btn.removeEventListener("mouseleave", reset);
+      });
+      mm.revert();
+    };
   }, []);
 
   return null;
@@ -2063,9 +2064,6 @@ rm "src/app/(web)/_components/value-props.tsx"
 - [ ] **Step 3: Rewrite `page.tsx`**
 
 ```tsx
-"use client";
-
-import { useRef } from "react";
 import type { Metadata } from "next";
 import NextImage from "next/image";
 
@@ -2084,12 +2082,23 @@ import TriageSection from "./_components/triage-section";
 import TrustBar from "./_components/trust-bar";
 import UnifiedInbox from "./_components/unified-inbox";
 
-export default function Home() {
-  const rootRef = useRef<HTMLDivElement>(null);
+export const metadata: Metadata = {
+  title: "",
+  description: "",
+  alternates: {
+    canonical: "https://www.caworks.ai",
+  },
+  openGraph: {
+    title: "",
+    description: "",
+    images: [{ url: "/images/meta/og-image.png", width: 1200, height: 630 }],
+  },
+};
 
+export default async function Home() {
   return (
-    <div ref={rootRef}>
-      <LandingFx rootRef={rootRef} />
+    <div>
+      <LandingFx />
 
       <section
         className="border-[#EEF2FA] border-b"
@@ -2131,46 +2140,20 @@ export default function Home() {
 }
 ```
 
-**Note:** `page.tsx` becomes a client component (`"use client"`) because it now owns the `rootRef` that `LandingFx` attaches to. The `metadata` export used previously must move to a `layout.tsx`/sibling server component, since `metadata` cannot be exported from a `"use client"` file. Check whether `src/app/(web)/layout.tsx` already exists:
-
-Run: `ls "src/app/(web)"`
-
-- If `src/app/(web)/layout.tsx` exists, add the metadata export there instead (merge with whatever it already exports).
-- If it does not exist, create `src/app/(web)/layout.tsx` with:
-
-```tsx
-import type { Metadata } from "next";
-
-export const metadata: Metadata = {
-  title: "",
-  description: "",
-  alternates: {
-    canonical: "https://www.caworks.ai",
-  },
-  openGraph: {
-    title: "",
-    description: "",
-    images: [{ url: "/images/meta/og-image.png", width: 1200, height: 630 }],
-  },
-};
-
-export default function WebLayout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
-}
-```
+**Note:** `page.tsx` stays a Server Component. `LandingFx` is itself marked `"use client"` internally, and a Server Component can render a Client Component as a child directly — the parent does not need `"use client"` just because one of its children does. `page.tsx` keeps its own `metadata` export (Server Components can export `metadata`; Client Components cannot), so no separate `layout.tsx` is needed for this route group.
 
 - [ ] **Step 4: Type-check and lint**
 
 Run: `bunx tsc --noEmit`
 Expected: no errors.
 
-Run: `bunx biome check --write "src/app/(web)/page.tsx" "src/app/(web)/layout.tsx"`
+Run: `bunx biome check --write "src/app/(web)/page.tsx"`
 Expected: no errors, no remaining references to the deleted files.
 
 - [ ] **Step 5: Commit**
 
 ```bash
-git add src/app/\(web\)/page.tsx src/app/\(web\)/layout.tsx
+git add src/app/\(web\)/page.tsx
 git rm "src/app/(web)/_components/problem-section.tsx" "src/app/(web)/_components/value-props.tsx"
 git commit -m "feat: wire up redesigned landing page, remove orphaned sections"
 ```
@@ -2187,7 +2170,6 @@ Run:
 ```bash
 bunx biome check \
   "src/app/(web)/page.tsx" \
-  "src/app/(web)/layout.tsx" \
   "src/app/(web)/_components/landing-fx.tsx" \
   "src/app/(web)/_components/header.tsx" \
   "src/app/(web)/_components/footer.tsx" \

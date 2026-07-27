@@ -1,5 +1,4 @@
-"use client";
-
+import type { Metadata } from "next";
 import NextImage from "next/image";
 
 import ChannelsSection from "./_components/channels-section";
@@ -17,7 +16,20 @@ import TriageSection from "./_components/triage-section";
 import TrustBar from "./_components/trust-bar";
 import UnifiedInbox from "./_components/unified-inbox";
 
-export default function Home() {
+export const metadata: Metadata = {
+  title: "",
+  description: "",
+  alternates: {
+    canonical: "https://www.caworks.ai",
+  },
+  openGraph: {
+    title: "",
+    description: "",
+    images: [{ url: "/images/meta/og-image.png", width: 1200, height: 630 }],
+  },
+};
+
+export default async function Home() {
   return (
     <div>
       <LandingFx />
