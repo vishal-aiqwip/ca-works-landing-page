@@ -16,7 +16,7 @@
 - Reuse existing shadcn primitives (`Button` variants, `Separator`) and the `cn()` helper from `@/lib/utils` instead of writing new primitives.
 - One-off illustrative hex colors used only inside mockup-style cards (status dots, chip backgrounds, avatar gradients) are literal arbitrary Tailwind values (e.g. `text-[#0464E4]`), matching the existing pattern already used in `product-demo.tsx`/`testimonials.tsx`. Brand/content-level color (accent blue, body text, muted text) uses the existing tokens: `text-primary`/`bg-primary`, `text-foreground`, `text-muted-foreground`.
 - No new dependencies are needed. Do not add any.
-- No unit test framework exists in this repo (no jest/vitest/playwright configured) — verification per task is `bunx tsc --noEmit` (type-check) plus `bun run lint` (Biome); the final task additionally runs `bun run build` and a manual browser check per this project's CLAUDE.md frontend-testing rule.
+- No unit test framework exists in this repo (no jest/vitest/playwright configured) — verification per task is `bunx tsc --noEmit` (type-check) plus `bunx biome check` scoped to that task's exact files (the repo has pre-existing, unrelated lint debt across `src/components/ui/*` and other files — confirmed by running `bun run lint` before starting this plan — so whole-repo lint is never the right check for a single task); the final task additionally runs `bun run build` and a manual browser check per this project's CLAUDE.md frontend-testing rule.
 - Package manager is Bun (`bun.lock` is the authoritative lockfile). Use `bun run <script>` / `bunx <tool>` for all commands.
 
 ---
@@ -332,8 +332,8 @@ rm "src/app/(web)/_components/scroll-reveal.tsx"
 Run: `bunx tsc --noEmit`
 Expected: no errors referencing `landing-fx.tsx`.
 
-Run: `bun run lint`
-Expected: no errors for `landing-fx.tsx` (the file is new and unused until Task 15 wires it in, so an "unused export" style warning, if any, is expected and resolves once Task 15 lands).
+Run: `bunx biome check --write "src/app/(web)/_components/landing-fx.tsx"`
+Expected: no errors for `landing-fx.tsx` (the file is new and unused until Task 15 wires it in, so an "unused export" style warning, if any, is expected and resolves once Task 15 lands). Note: the repo has pre-existing lint debt in unrelated files (run `bun run lint` with no args to see it) — this plan only requires the files it touches to be clean, not the whole repo.
 
 - [ ] **Step 4: Commit**
 
@@ -441,8 +441,8 @@ export default Header;
 Run: `bunx tsc --noEmit`
 Expected: no errors.
 
-Run: `bun run lint`
-Expected: no errors (Biome may auto-sort the Tailwind class lists — if it reports sortable-class warnings, run `bun run format` and re-check).
+Run: `bunx biome check --write "src/app/(web)/_components/header.tsx"`
+Expected: 0 remaining errors after the auto-fix (Biome will auto-sort Tailwind class lists and normalize formatting/line-endings in place).
 
 - [ ] **Step 3: Commit**
 
@@ -568,7 +568,7 @@ export default Footer;
 Run: `bunx tsc --noEmit`
 Expected: no errors.
 
-Run: `bun run lint`
+Run: `bunx biome check --write "src/app/(web)/_components/footer.tsx"`
 Expected: no errors.
 
 - [ ] **Step 3: Commit**
@@ -739,7 +739,7 @@ export default TrustBar;
 Run: `bunx tsc --noEmit`
 Expected: no errors.
 
-Run: `bun run lint`
+Run: `bunx biome check --write "src/app/(web)/_components/hero.tsx" "src/app/(web)/_components/trust-bar.tsx"`
 Expected: no errors.
 
 - [ ] **Step 4: Commit**
@@ -873,7 +873,7 @@ export default UnifiedInbox;
 Run: `bunx tsc --noEmit`
 Expected: no errors.
 
-Run: `bun run lint`
+Run: `bunx biome check --write "src/app/(web)/_components/unified-inbox.tsx"`
 Expected: no errors.
 
 - [ ] **Step 3: Commit**
@@ -1135,7 +1135,7 @@ export default FeaturesSection;
 Run: `bunx tsc --noEmit`
 Expected: no errors.
 
-Run: `bun run lint`
+Run: `bunx biome check --write "src/app/(web)/_components/features-section.tsx"`
 Expected: no errors.
 
 - [ ] **Step 3: Commit**
@@ -1331,7 +1331,7 @@ export default ChannelsSection;
 Run: `bunx tsc --noEmit`
 Expected: no errors.
 
-Run: `bun run lint`
+Run: `bunx biome check --write "src/app/(web)/_components/channels-section.tsx"`
 Expected: no errors.
 
 - [ ] **Step 3: Commit**
@@ -1443,7 +1443,7 @@ export default TriageSection;
 Run: `bunx tsc --noEmit`
 Expected: no errors.
 
-Run: `bun run lint`
+Run: `bunx biome check --write "src/app/(web)/_components/triage-section.tsx"`
 Expected: no errors.
 
 - [ ] **Step 3: Commit**
@@ -1562,7 +1562,7 @@ export default RemindersSection;
 Run: `bunx tsc --noEmit`
 Expected: no errors.
 
-Run: `bun run lint`
+Run: `bunx biome check --write "src/app/(web)/_components/reminders-section.tsx"`
 Expected: no errors.
 
 - [ ] **Step 3: Commit**
@@ -1663,7 +1663,7 @@ export default HowItWorks;
 Run: `bunx tsc --noEmit`
 Expected: no errors.
 
-Run: `bun run lint`
+Run: `bunx biome check --write "src/app/(web)/_components/how-it-works.tsx"`
 Expected: no errors.
 
 - [ ] **Step 3: Commit**
@@ -1803,7 +1803,7 @@ export default Testimonials;
 Run: `bunx tsc --noEmit`
 Expected: no errors.
 
-Run: `bun run lint`
+Run: `bunx biome check --write "src/app/(web)/_components/testimonials.tsx"`
 Expected: no errors.
 
 - [ ] **Step 3: Commit**
@@ -1893,7 +1893,7 @@ export default FaqSection;
 Run: `bunx tsc --noEmit`
 Expected: no errors.
 
-Run: `bun run lint`
+Run: `bunx biome check --write "src/app/(web)/_components/faq-section.tsx"`
 Expected: no errors.
 
 - [ ] **Step 3: Commit**
@@ -2027,7 +2027,7 @@ export default Marquee;
 Run: `bunx tsc --noEmit`
 Expected: no errors.
 
-Run: `bun run lint`
+Run: `bunx biome check --write "src/app/(web)/_components/cta-section.tsx" "src/app/(web)/_components/marquee.tsx"`
 Expected: no errors.
 
 - [ ] **Step 4: Commit**
@@ -2165,7 +2165,7 @@ export default function WebLayout({ children }: { children: React.ReactNode }) {
 Run: `bunx tsc --noEmit`
 Expected: no errors.
 
-Run: `bun run lint`
+Run: `bunx biome check --write "src/app/(web)/page.tsx" "src/app/(web)/layout.tsx"`
 Expected: no errors, no remaining references to the deleted files.
 
 - [ ] **Step 5: Commit**
@@ -2182,10 +2182,30 @@ git commit -m "feat: wire up redesigned landing page, remove orphaned sections"
 
 **Files:** none (verification only).
 
-- [ ] **Step 1: Full lint pass**
+- [ ] **Step 1: Lint pass on every file this plan touches**
 
-Run: `bun run lint`
-Expected: 0 errors, 0 warnings across the whole repo.
+Run:
+```bash
+bunx biome check \
+  "src/app/(web)/page.tsx" \
+  "src/app/(web)/layout.tsx" \
+  "src/app/(web)/_components/landing-fx.tsx" \
+  "src/app/(web)/_components/header.tsx" \
+  "src/app/(web)/_components/footer.tsx" \
+  "src/app/(web)/_components/hero.tsx" \
+  "src/app/(web)/_components/trust-bar.tsx" \
+  "src/app/(web)/_components/unified-inbox.tsx" \
+  "src/app/(web)/_components/features-section.tsx" \
+  "src/app/(web)/_components/channels-section.tsx" \
+  "src/app/(web)/_components/triage-section.tsx" \
+  "src/app/(web)/_components/reminders-section.tsx" \
+  "src/app/(web)/_components/how-it-works.tsx" \
+  "src/app/(web)/_components/testimonials.tsx" \
+  "src/app/(web)/_components/faq-section.tsx" \
+  "src/app/(web)/_components/cta-section.tsx" \
+  "src/app/(web)/_components/marquee.tsx"
+```
+Expected: 0 errors, 0 warnings across this list. Note: `bun run lint` (no args) checks the whole repo and has pre-existing, unrelated lint debt outside these files (confirmed at plan-execution time, e.g. across `src/components/ui/*`) — that debt is out of scope for this plan and must not block it. If this scoped check reports anything, fix it before continuing.
 
 - [ ] **Step 2: Full production build**
 
