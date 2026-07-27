@@ -2001,7 +2001,6 @@ const Marquee = () => {
       >
         {LOOPED_ITEMS.map((item, i) => (
           <span
-            // biome-ignore lint/suspicious/noArrayIndexKey: static duplicated marquee list, order never changes
             key={`${item.label}-${i}`}
             className={
               item.label === "✦"
