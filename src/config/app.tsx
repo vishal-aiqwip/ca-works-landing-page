@@ -16,6 +16,14 @@ export const APP_DESCRIPTION: string = "";
 export const BOOKING_URL = "https://cal.com/sairam-chennapragada-hbzxax/30min";
 
 /**
+ * Legal entity details (used on Terms, Privacy Policy, and Data Deletion pages)
+ */
+export const LEGAL_ENTITY_NAME = "CAworks";
+export const LEGAL_ENTITY_ADDRESS =
+  "Scalex Loop, Embassy Golf Links Rd, Challaghatta, Bengaluru, Karnataka 560037";
+export const SUPPORT_EMAIL = "contact@caworks.ai";
+
+/**
  * Revalidate time(s) each fetch request
  * Set default revalidate at every hour
  */

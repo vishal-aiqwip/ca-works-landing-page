@@ -26,6 +26,7 @@ const FOOTER_COLUMNS = [
     links: [
       { label: "Terms", href: "/terms" },
       { label: "Privacy", href: "/privacy" },
+      { label: "Data Deletion", href: "/data-deletion" },
       { label: "Security", href: "/security" },
     ],
   },
