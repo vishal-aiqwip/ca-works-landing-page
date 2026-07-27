@@ -221,6 +221,11 @@ export function LandingFx({
       }
 
       // Magnetic hover on primary booking CTAs
+      const magneticHandlers: Array<{
+        btn: HTMLAnchorElement;
+        onMove: (e: MouseEvent) => void;
+        reset: () => void;
+      }> = [];
       for (const btn of q<HTMLAnchorElement>('a[href*="cal.com"]')) {
         btn.style.willChange = "transform";
         const strength = 0.35;
@@ -244,10 +249,17 @@ export function LandingFx({
           });
         btn.addEventListener("mousemove", onMove);
         btn.addEventListener("mouseleave", reset);
+        magneticHandlers.push({ btn, onMove, reset });
       }
     });
 
-    return () => mm.revert();
+    return () => {
+      magneticHandlers.forEach(({ btn, onMove, reset }) => {
+        btn.removeEventListener("mousemove", onMove);
+        btn.removeEventListener("mouseleave", reset);
+      });
+      mm.revert();
+    };
   }, []);
 
   return null;
