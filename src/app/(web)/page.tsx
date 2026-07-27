@@ -1,7 +1,6 @@
 "use client";
 
 import NextImage from "next/image";
-import { useRef } from "react";
 
 import ChannelsSection from "./_components/channels-section";
 import CtaSection from "./_components/cta-section";
@@ -19,11 +18,9 @@ import TrustBar from "./_components/trust-bar";
 import UnifiedInbox from "./_components/unified-inbox";
 
 export default function Home() {
-  const rootRef = useRef<HTMLDivElement>(null);
-
   return (
-    <div ref={rootRef}>
-      <LandingFx rootRef={rootRef} />
+    <div>
+      <LandingFx />
 
       <section
         className="border-[#EEF2FA] border-b"

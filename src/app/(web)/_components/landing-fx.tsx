@@ -1,7 +1,5 @@
 "use client";
 
-import type { RefObject } from "react";
-
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -39,19 +37,18 @@ function splitWords(el: HTMLElement) {
 /**
  * Mounted once at the root of the landing page. Ports the reference
  * mockup's bespoke GSAP behavior: masked headline/heading reveal, hero
- * intro stagger, scroll-triggered fade-ups, card-group stagger, image/blob
+ * intro stagger, scroll-triggered fade-ups, card-group stagger, blob
  * parallax, a scroll-velocity-reactive marquee, and magnetic CTA hover.
  * Renders nothing.
+ *
+ * Queries `document` directly rather than an ancestor ref: this component
+ * only ever mounts once, as the first child of the page's root element, and
+ * React's commit phase runs child layout effects before the parent's own
+ * ref gets attached — so a ref on that ancestor div is still null when this
+ * effect fires.
  */
-export function LandingFx({
-  rootRef,
-}: {
-  rootRef: RefObject<HTMLDivElement | null>;
-}) {
+export function LandingFx() {
   useGSAP(() => {
-    const root = rootRef.current;
-    if (!root) return;
-
     const mm = gsap.matchMedia();
     const magneticHandlers: Array<{
       btn: HTMLAnchorElement;
@@ -61,10 +58,10 @@ export function LandingFx({
 
     mm.add("(prefers-reduced-motion: no-preference)", () => {
       const q = <T extends Element = HTMLElement>(selector: string) =>
-        Array.from(root.querySelectorAll<T>(selector));
+        Array.from(document.querySelectorAll<T>(selector));
 
       // Hero headline: masked word-by-word rise on load
-      const h1 = root.querySelector<HTMLElement>("h1");
+      const h1 = document.querySelector<HTMLElement>("h1");
       const heroWords = h1 ? splitWords(h1) : [];
       gsap.set(heroWords, { yPercent: 115 });
 
@@ -149,7 +146,7 @@ export function LandingFx({
       }
 
       // Hero glow blob parallax
-      const blob = root.querySelector<HTMLElement>("[data-blob]");
+      const blob = document.querySelector<HTMLElement>("[data-blob]");
       if (blob) {
         gsap.to(blob, {
           yPercent: 26,
@@ -165,7 +162,7 @@ export function LandingFx({
       }
 
       // Marquee driven by scroll velocity
-      const marquee = root.querySelector<HTMLElement>("[data-marquee]");
+      const marquee = document.querySelector<HTMLElement>("[data-marquee]");
       if (marquee) {
         const half = marquee.scrollWidth / 2;
         const loop = gsap.to(marquee, {
