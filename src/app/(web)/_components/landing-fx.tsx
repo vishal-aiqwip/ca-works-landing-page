@@ -7,9 +7,22 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 gsap.registerPlugin(useGSAP, ScrollTrigger);
 
 function splitWords(el: HTMLElement) {
+  // Idempotent: reverse a previous split first. Next.js's client-side
+  // navigation can restore a page's DOM instead of recreating it fresh
+  // (e.g. returning to the home page via the back button), so this
+  // element may already contain mask-wrapper spans from an earlier mount
+  // rather than the plain text this function expects.
+  for (const child of Array.from(el.childNodes)) {
+    if (child instanceof HTMLElement && child.dataset.wordMask) {
+      el.replaceChild(document.createTextNode(child.textContent ?? ""), child);
+    }
+  }
+  el.normalize();
+
   const words: HTMLElement[] = [];
   const wrap = (word: string) => {
     const mask = document.createElement("span");
+    mask.dataset.wordMask = "1";
     mask.style.cssText =
       "display:inline-block;overflow:hidden;vertical-align:top;padding-bottom:.08em";
     const inner = document.createElement("span");
@@ -63,10 +76,10 @@ export function LandingFx() {
       // Hero headline: masked word-by-word rise on load
       const h1 = document.querySelector<HTMLElement>("h1");
       const heroWords = h1 ? splitWords(h1) : [];
-      gsap.set(heroWords, { yPercent: 115 });
+      if (heroWords.length) gsap.set(heroWords, { yPercent: 115 });
 
       const heroItems = q("[data-hero-item]");
-      gsap.set(heroItems, { opacity: 0, y: 30 });
+      if (heroItems.length) gsap.set(heroItems, { opacity: 0, y: 30 });
 
       const introTl = gsap.timeline({ delay: 0.2 });
       if (heroWords.length) {
@@ -94,6 +107,7 @@ export function LandingFx() {
       // Section headings: masked word reveal on scroll
       for (const el of q("[data-reveal-heading]")) {
         const words = splitWords(el);
+        if (!words.length) continue;
         gsap.set(words, { yPercent: 115 });
         gsap.to(words, {
           yPercent: 0,
@@ -231,7 +245,18 @@ export function LandingFx() {
       }
     });
 
+    // ScrollTrigger caches each trigger's start/end position when it's
+    // created. Right after a client-side navigation the layout can still be
+    // settling (images/fonts finishing), so those cached positions can go
+    // stale and a trigger never fires even once you scroll past it.
+    // Recalculate once things have settled, and again on window load.
+    const refreshTimer = setTimeout(() => ScrollTrigger.refresh(), 350);
+    const onLoadRefresh = () => ScrollTrigger.refresh();
+    window.addEventListener("load", onLoadRefresh);
+
     return () => {
+      clearTimeout(refreshTimer);
+      window.removeEventListener("load", onLoadRefresh);
       magneticHandlers.forEach(({ btn, onMove, reset }) => {
         btn.removeEventListener("mousemove", onMove);
         btn.removeEventListener("mouseleave", reset);
