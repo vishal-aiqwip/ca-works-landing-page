@@ -1,40 +1,30 @@
-import type { Metadata } from "next";
-import NextImage from "next/image";
+"use client";
 
+import NextImage from "next/image";
+import { useRef } from "react";
+
+import ChannelsSection from "./_components/channels-section";
 import CtaSection from "./_components/cta-section";
+import FaqSection from "./_components/faq-section";
 import FeaturesSection from "./_components/features-section";
 import Hero from "./_components/hero";
 import HowItWorks from "./_components/how-it-works";
-import ProblemSection from "./_components/problem-section";
+import { LandingFx } from "./_components/landing-fx";
+import Marquee from "./_components/marquee";
 import ProductDemo from "./_components/product-demo";
+import RemindersSection from "./_components/reminders-section";
 import Testimonials from "./_components/testimonials";
+import TriageSection from "./_components/triage-section";
 import TrustBar from "./_components/trust-bar";
-import ValueProps from "./_components/value-props";
+import UnifiedInbox from "./_components/unified-inbox";
 
-/**
- * Metadata for the page
- */
+export default function Home() {
+  const rootRef = useRef<HTMLDivElement>(null);
 
-export const metadata: Metadata = {
-  title: "",
-  description: "",
-  alternates: {
-    canonical: "https://www.caworks.ai",
-  },
-  openGraph: {
-    title: "",
-    description: "",
-    images: [{ url: "/images/meta/og-image.png", width: 1200, height: 630 }],
-  },
-};
-
-/**
- * @file page.tsx
- * @description Home page of the app
- */
-export default async function Home() {
   return (
-    <>
+    <div ref={rootRef}>
+      <LandingFx rootRef={rootRef} />
+
       <section
         className="border-[#EEF2FA] border-b"
         style={{
@@ -44,10 +34,10 @@ export default async function Home() {
       >
         <Hero />
 
-        <div className="hidden md:block" data-reveal>
+        <div className="hidden md:block">
           <ProductDemo />
         </div>
-        <div className="px-5 pb-16 md:hidden" data-reveal>
+        <div className="px-5 pb-16 md:hidden">
           <NextImage
             src="/videos/product-view.gif"
             alt="CA Works product preview"
@@ -60,12 +50,16 @@ export default async function Home() {
       </section>
 
       <TrustBar />
-      <ProblemSection />
-      <ValueProps />
+      <UnifiedInbox />
       <FeaturesSection />
+      <ChannelsSection />
+      <TriageSection />
+      <RemindersSection />
       <HowItWorks />
       <Testimonials />
+      <FaqSection />
       <CtaSection />
-    </>
+      <Marquee />
+    </div>
   );
 }
