@@ -5,38 +5,26 @@ const FIRMS = [
   "SAR Associates",
   "Vasavi Tax",
 ];
-const MARQUEE_ITEMS = [...FIRMS, ...FIRMS];
 
 const TrustBar = () => {
   return (
-    <section className="bg-white">
-      <div className="mx-auto max-w-[95%] px-4 py-10 text-center sm:px-6 sm:py-16 lg:px-8">
-        <span
-          data-reveal
-          className="mb-[22px] block font-bold text-[13px] text-primary uppercase tracking-[0.08em]"
-        >
-          Trusted by modern CA & tax firms
-        </span>
+    <section className="border-[#F1F5F9] border-y bg-white">
+      <div className="mx-auto max-w-[1120px] px-8 py-8.5 text-center">
         <div
-          className="overflow-hidden"
-          style={{
-            maskImage:
-              "linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)",
-            WebkitMaskImage:
-              "linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)",
-          }}
+          data-reveal
+          className="mb-5 font-bold text-[#94A3B8] text-[12.5px] uppercase tracking-[0.08em]"
         >
-          <div className="flex w-max animate-[cw-marquee_24s_linear_infinite] gap-14 opacity-55">
-            {MARQUEE_ITEMS.map((firm, i) => (
-              <span
-                // biome-ignore lint/suspicious/noArrayIndexKey: static duplicated marquee list, order never changes
-                key={`${firm}-${i}`}
-                className="whitespace-nowrap font-extrabold text-[#7A8893] text-[19px] tracking-[-0.02em]"
-              >
-                {firm}
-              </span>
-            ))}
-          </div>
+          Trusted by modern CA &amp; tax firms
+        </div>
+        <div className="flex flex-wrap items-center justify-center gap-12 opacity-60">
+          {FIRMS.map((firm) => (
+            <span
+              key={firm}
+              className="font-extrabold text-[#64748B] text-[20px] tracking-[-0.02em]"
+            >
+              {firm}
+            </span>
+          ))}
         </div>
       </div>
     </section>
