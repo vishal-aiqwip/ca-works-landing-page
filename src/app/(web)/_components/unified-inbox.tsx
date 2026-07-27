@@ -1,5 +1,7 @@
 import Image from "next/image";
 
+import { ArrowRight } from "lucide-react";
+
 const BENTO_IMAGES = [
   {
     id: "ca-ledger",
@@ -65,9 +67,10 @@ const UnifiedInbox = () => {
             </p>
             <a
               href="#features"
-              className="mt-7 inline-block rounded-xl bg-[#0F172A] px-5.5 py-3.5 font-bold text-[15px] text-white"
+              className="mt-7 inline-flex items-center gap-1.5 rounded-xl bg-[#0F172A] px-5.5 py-3.5 font-bold text-[15px] text-white"
             >
-              Explore the inbox →
+              Explore the inbox
+              <ArrowRight size={16} />
             </a>
           </div>
         </div>

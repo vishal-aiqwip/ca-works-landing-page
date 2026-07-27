@@ -1,4 +1,4 @@
-import { Bell } from "lucide-react";
+import { ArrowRight, Bell } from "lucide-react";
 
 import { BOOKING_URL } from "@/config";
 
@@ -37,9 +37,10 @@ const RemindersSection = () => {
             href={BOOKING_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="mt-7 inline-block rounded-xl bg-[#0F172A] px-5.5 py-3.5 font-bold text-[15px] text-white"
+            className="mt-7 inline-flex items-center gap-1.5 rounded-xl bg-[#0F172A] px-5.5 py-3.5 font-bold text-[15px] text-white"
           >
-            See it in action →
+            See it in action
+            <ArrowRight size={16} />
           </a>
         </div>
 

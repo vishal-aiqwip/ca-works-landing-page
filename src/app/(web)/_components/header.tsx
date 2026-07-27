@@ -4,7 +4,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 import { Button } from "@/components";
-import { APP_NAME, BOOKING_URL } from "@/config";
+import { BOOKING_URL } from "@/config";
 import { cn } from "@/lib/utils";
 
 const NAV_LINKS = [
