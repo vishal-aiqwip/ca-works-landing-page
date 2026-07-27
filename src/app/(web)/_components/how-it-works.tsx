@@ -2,7 +2,7 @@ const STEPS = [
   {
     num: "1",
     title: "Connect your channels",
-    body: "Link your firm's WhatsApp Business number and email inbox in a few minutes. No new app for clients to install.",
+    body: "Link your firm's WhatsApp Business number and email inbox in minutes. No new app for clients to install.",
   },
   {
     num: "2",
@@ -12,7 +12,7 @@ const STEPS = [
   {
     num: "3",
     title: "It replies & acts in your voice",
-    body: "Answers routine questions, sends document links, collects uploads and files them automatically, without manual effort.",
+    body: "Answers routine questions, sends document links, collects uploads and files them — without manual effort.",
   },
   {
     num: "4",
@@ -24,38 +24,43 @@ const STEPS = [
 const HowItWorks = () => {
   return (
     <section
-      id="channels"
-      className="mx-auto max-w-[95%] px-4 py-12 sm:px-6 sm:py-20 lg:px-8"
+      id="how"
+      className="mx-auto max-w-[1160px] px-6 pt-17.5 pb-5 text-center sm:px-10"
     >
-      <div data-reveal className="mx-auto mb-14 max-w-[60ch] text-center">
-        <div className="mb-3.5 font-extrabold text-[13px] text-primary uppercase tracking-[0.1em]">
-          How it works
-        </div>
-        <h2 className="mb-4 font-extrabold text-[28px] text-foreground leading-[1.1] tracking-[-0.025em] sm:whitespace-nowrap sm:text-[40px]">
-          Up and running in 4 simple steps
-        </h2>
-        <p className="mx-auto max-w-[52ch] text-[18px] text-muted-foreground leading-[1.6]">
-          Connect your channels once and effortlessly handle the day-to-day
-          client communications
-        </p>
-      </div>
       <div
-        className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4"
+        data-reveal
+        className="inline-block rounded-full bg-[#EFF4FF] px-3.5 py-1.5 font-bold text-[12px] text-primary uppercase tracking-[0.08em]"
+      >
+        How it works
+      </div>
+      <h2
+        data-reveal-heading
+        className="mx-auto mt-4 max-w-[640px] font-extrabold text-[32px] leading-[1.05] tracking-[-0.02em] sm:text-[42px] lg:text-[52px]"
+      >
+        Up and running in 4 simple steps
+      </h2>
+      <p
+        data-reveal
+        className="mx-auto mt-4.5 max-w-[560px] text-[#475569] text-[18px] leading-[1.55]"
+      >
+        Connect your channels once and effortlessly handle the day-to-day client
+        communication.
+      </p>
+      <div
         data-reveal-group
+        className="mt-12 grid grid-cols-1 gap-5.5 text-left sm:grid-cols-2 lg:grid-cols-4"
       >
         {STEPS.map((s) => (
           <div
             key={s.num}
             data-reveal-item
-            className="rounded-2xl border border-muted-foreground/15 bg-white p-6 shadow-[0_1px_2px_rgba(16,34,51,0.04)]"
+            className="rounded-2xl border border-[#E2E8F0] p-6.5 transition-[transform,box-shadow,border-color] hover:-translate-y-1.25 hover:border-[#C7D2FE] hover:shadow-[0_20px_38px_-20px_rgba(15,23,42,0.2)]"
           >
-            <div className="mb-4 flex size-11 items-center justify-center rounded-full bg-primary font-extrabold text-[18px] text-white">
+            <div className="flex size-10 items-center justify-center rounded-full bg-[#0F172A] font-extrabold text-[16px] text-white">
               {s.num}
             </div>
-            <h3 className="mb-1.5 font-bold text-[18px] tracking-[-0.01em]">
-              {s.title}
-            </h3>
-            <p className="text-[#596B75] text-[14.5px] leading-[1.55]">
+            <h3 className="mt-4.5 mb-2 font-bold text-[18px]">{s.title}</h3>
+            <p className="text-[#475569] text-[14.5px] leading-[1.55]">
               {s.body}
             </p>
           </div>
